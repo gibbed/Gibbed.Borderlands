@@ -9,22 +9,25 @@ namespace Gibbed.Borderlands.FileFormats
     {
         public class Skill
         {
-            public UInt32 Level;
-            public UInt32 Experience;
-            public UInt32 Unknown2;
+            public string Name { get; set; }
+            public UInt32 Level { get; set; }
+            public UInt32 Experience { get; set; }
+            public UInt32 Unknown3 { get; set; }
 
             public void Deserialize(Stream input)
             {
+                this.Name = input.ReadStringASCIIU32();
                 this.Level = input.ReadValueU32();
                 this.Experience = input.ReadValueU32();
-                this.Unknown2 = input.ReadValueU32();
+                this.Unknown3 = input.ReadValueU32();
             }
 
             public void Serialize(Stream output)
             {
+                output.WriteStringASCIIU32(this.Name);
                 output.WriteValueU32(this.Level);
                 output.WriteValueU32(this.Experience);
-                output.WriteValueU32(this.Unknown2);
+                output.WriteValueU32(this.Unknown3);
             }
 
             public override string ToString()
@@ -38,9 +41,9 @@ namespace Gibbed.Borderlands.FileFormats
                     rez += ", XP " + this.Experience.ToString();
                 }
 
-                if (this.Unknown2 != 0xFFFFFFFF)
+                if (this.Unknown3 != 0xFFFFFFFF)
                 {
-                    rez += ", " + this.Unknown2.ToString("X8");
+                    rez += ", " + this.Unknown3.ToString("X8");
                 }
 
                 return rez;
@@ -376,7 +379,7 @@ namespace Gibbed.Borderlands.FileFormats
         public UInt32 Unknown03;
         public UInt32 Money { get; set; }
         public UInt32 Unknown05;
-        public Dictionary<string, Skill> Skills = new Dictionary<string, Skill>();
+        public List<Skill> Skills { get; set; }
         public UInt32 Unknown07;
         public UInt32 Unknown08;
         public UInt32 Unknown09;
@@ -410,6 +413,11 @@ namespace Gibbed.Borderlands.FileFormats
         public Dictionary<int, EchoZone> EchoZones = new Dictionary<int, EchoZone>();
         public byte[] Unknown38 = new byte[0];
 
+        public Player()
+        {
+            this.Skills = new List<Skill>();
+        }
+
         public void Deserialize(Stream input)
         {
             if (input.ReadStringASCII(4) != "PLYR")
@@ -437,10 +445,9 @@ namespace Gibbed.Borderlands.FileFormats
                 this.Skills.Clear();
                 for (uint i = 0; i < count; i++)
                 {
-                    string name = input.ReadStringASCIIU32();
                     Skill skill = new Skill();
                     skill.Deserialize(input);
-                    this.Skills.Add(name, skill);
+                    this.Skills.Add(skill);
                 }
             }
 
@@ -650,10 +657,9 @@ namespace Gibbed.Borderlands.FileFormats
             // Skills
             {
                 output.WriteValueS32(this.Skills.Count);
-                foreach (KeyValuePair<string, Skill> skill in this.Skills)
+                foreach (Skill skill in this.Skills)
                 {
-                    output.WriteStringASCIIU32(skill.Key);
-                    skill.Value.Serialize(output);
+                    skill.Serialize(output);
                 }
             }
 
