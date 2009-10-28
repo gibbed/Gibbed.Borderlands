@@ -44,6 +44,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.openButton = new System.Windows.Forms.ToolStripButton();
             this.saveButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.mainTabs = new System.Windows.Forms.TabControl();
             this.characterTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,9 +57,15 @@
             this.experienceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.weaponsTab = new System.Windows.Forms.TabPage();
             this.itemsTab = new System.Windows.Forms.TabPage();
+            this.skillsTab = new System.Windows.Forms.TabPage();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.skillsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.skillsDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             experienceLabel = new System.Windows.Forms.Label();
             levelLabel = new System.Windows.Forms.Label();
             moneyLabel = new System.Windows.Forms.Label();
@@ -74,6 +81,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.levelNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.experienceNumericUpDown)).BeginInit();
+            this.skillsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.skillsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skillsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // experienceLabel
@@ -217,6 +227,16 @@
             this.saveButton.Text = "Save";
             this.saveButton.Click += new System.EventHandler(this.OnSave);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // mainTabs
             // 
             this.mainTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -225,6 +245,7 @@
             this.mainTabs.Controls.Add(this.characterTab);
             this.mainTabs.Controls.Add(this.weaponsTab);
             this.mainTabs.Controls.Add(this.itemsTab);
+            this.mainTabs.Controls.Add(this.skillsTab);
             this.mainTabs.Location = new System.Drawing.Point(12, 28);
             this.mainTabs.Name = "mainTabs";
             this.mainTabs.SelectedIndex = 0;
@@ -387,6 +408,18 @@
             this.itemsTab.Text = "Items";
             this.itemsTab.UseVisualStyleBackColor = true;
             // 
+            // skillsTab
+            // 
+            this.skillsTab.AutoScroll = true;
+            this.skillsTab.Controls.Add(this.skillsDataGridView);
+            this.skillsTab.Location = new System.Drawing.Point(4, 22);
+            this.skillsTab.Name = "skillsTab";
+            this.skillsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.skillsTab.Size = new System.Drawing.Size(592, 215);
+            this.skillsTab.TabIndex = 3;
+            this.skillsTab.Text = "Skills";
+            this.skillsTab.UseVisualStyleBackColor = true;
+            // 
             // openFileDialog
             // 
             this.openFileDialog.DefaultExt = "sav";
@@ -396,15 +429,50 @@
             // 
             this.saveFileDialog.Filter = "Borderlands Saves (*.sav)|*.sav|All Files (*.*)|*.*";
             // 
-            // toolStripButton1
+            // skillsBindingSource
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.skillsBindingSource.DataMember = "Skills";
+            this.skillsBindingSource.DataSource = this.playerSource;
+            // 
+            // skillsDataGridView
+            // 
+            this.skillsDataGridView.AutoGenerateColumns = false;
+            this.skillsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.skillsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.skillsDataGridView.DataSource = this.skillsBindingSource;
+            this.skillsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.skillsDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.skillsDataGridView.Name = "skillsDataGridView";
+            this.skillsDataGridView.Size = new System.Drawing.Size(586, 209);
+            this.skillsDataGridView.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Level";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Level";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Experience";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Experience";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Unknown3";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Unknown3";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // Editor
             // 
@@ -426,6 +494,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.levelNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.experienceNumericUpDown)).EndInit();
+            this.skillsTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.skillsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skillsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,6 +527,13 @@
         private System.Windows.Forms.NumericUpDown backpackSizeNumericUpDown;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.TabPage skillsTab;
+        private System.Windows.Forms.DataGridView skillsDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.BindingSource skillsBindingSource;
     }
 }
 
