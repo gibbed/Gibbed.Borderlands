@@ -52,54 +52,54 @@ namespace Gibbed.Borderlands.FileFormats
 
         public class AmmoPool
         {
-            public string Unknown0;
-            public string Unknown1;
-            public float Unknown2;
-            public UInt32 Unknown3;
+            public string Name { get; set; }
+            public string Pool { get; set; }
+            public float Quantity { get; set; }
+            public UInt32 UpgradeLevel { get; set; }
 
             public void Deserialize(Stream input)
             {
-                this.Unknown0 = input.ReadStringASCIIU32();
-                this.Unknown1 = input.ReadStringASCIIU32();
-                this.Unknown2 = input.ReadValueF32();
-                this.Unknown3 = input.ReadValueU32();
+                this.Name = input.ReadStringASCIIU32();
+                this.Pool = input.ReadStringASCIIU32();
+                this.Quantity = input.ReadValueF32();
+                this.UpgradeLevel = input.ReadValueU32();
             }
 
             public void Serialize(Stream output)
             {
-                output.WriteStringASCIIU32(this.Unknown0);
-                output.WriteStringASCIIU32(this.Unknown1);
-                output.WriteValueF32(this.Unknown2);
-                output.WriteValueU32(this.Unknown3);
+                output.WriteStringASCIIU32(this.Name);
+                output.WriteStringASCIIU32(this.Pool);
+                output.WriteValueF32(this.Quantity);
+                output.WriteValueU32(this.UpgradeLevel);
             }
         }
 
         public class Item
         {
-            public string Unknown00;
-            public string Unknown01;
-            public string Unknown02;
-            public string Unknown03;
-            public string Unknown04;
-            public string Unknown05;
-            public string Unknown06;
-            public string Unknown07;
-            public string Unknown08;
-            public UInt32 Unknown09;
-            public UInt32 IsEquipped;
-            public UInt32 EquipSlot;
+            public string Grade { get; set; }
+            public string Type { get; set; }
+            public string Body { get; set; }
+            public string LeftSide { get; set; }
+            public string RightSide { get; set; }
+            public string Material { get; set; }
+            public string Manufacturer { get; set; }
+            public string Prefix { get; set; }
+            public string Title { get; set; }
+            public UInt32 Unknown09 { get; set; }
+            public UInt32 IsEquipped { get; set; }
+            public UInt32 EquipSlot { get; set; }
 
             public void Deserialize(Stream input)
             {
-                this.Unknown00 = input.ReadStringASCIIU32();
-                this.Unknown01 = input.ReadStringASCIIU32();
-                this.Unknown02 = input.ReadStringASCIIU32();
-                this.Unknown03 = input.ReadStringASCIIU32();
-                this.Unknown04 = input.ReadStringASCIIU32();
-                this.Unknown05 = input.ReadStringASCIIU32();
-                this.Unknown06 = input.ReadStringASCIIU32();
-                this.Unknown07 = input.ReadStringASCIIU32();
-                this.Unknown08 = input.ReadStringASCIIU32();
+                this.Grade = input.ReadStringASCIIU32();
+                this.Type = input.ReadStringASCIIU32();
+                this.Body = input.ReadStringASCIIU32();
+                this.LeftSide = input.ReadStringASCIIU32();
+                this.RightSide = input.ReadStringASCIIU32();
+                this.Material = input.ReadStringASCIIU32();
+                this.Manufacturer = input.ReadStringASCIIU32();
+                this.Prefix = input.ReadStringASCIIU32();
+                this.Title = input.ReadStringASCIIU32();
                 this.Unknown09 = input.ReadValueU32();
                 this.IsEquipped = input.ReadValueU32();
                 this.EquipSlot = input.ReadValueU32();
@@ -107,15 +107,15 @@ namespace Gibbed.Borderlands.FileFormats
 
             public void Serialize(Stream output)
             {
-                output.WriteStringASCIIU32(this.Unknown00);
-                output.WriteStringASCIIU32(this.Unknown01);
-                output.WriteStringASCIIU32(this.Unknown02);
-                output.WriteStringASCIIU32(this.Unknown03);
-                output.WriteStringASCIIU32(this.Unknown04);
-                output.WriteStringASCIIU32(this.Unknown05);
-                output.WriteStringASCIIU32(this.Unknown06);
-                output.WriteStringASCIIU32(this.Unknown07);
-                output.WriteStringASCIIU32(this.Unknown08);
+                output.WriteStringASCIIU32(this.Grade);
+                output.WriteStringASCIIU32(this.Type);
+                output.WriteStringASCIIU32(this.Body);
+                output.WriteStringASCIIU32(this.LeftSide);
+                output.WriteStringASCIIU32(this.RightSide);
+                output.WriteStringASCIIU32(this.Material);
+                output.WriteStringASCIIU32(this.Manufacturer);
+                output.WriteStringASCIIU32(this.Prefix);
+                output.WriteStringASCIIU32(this.Title);
                 output.WriteValueU32(this.Unknown09);
                 output.WriteValueU32(this.IsEquipped);
                 output.WriteValueU32(this.EquipSlot);
@@ -124,38 +124,38 @@ namespace Gibbed.Borderlands.FileFormats
 
         public struct Weapon
         {
-            public string Grade;
-            public string Manufacturer;
-            public string Type;
-            public string ModelBody;
-            public string ModelGrip;
-            public string ModelMagazine;
-            public string ModelBarrel;
-            public string ModelSight;
-            public string ModelStock;
-            public string ModelAction;
-            public string ModelAccuracy;
-            public string ModelMaterial;
-            public string Prefix;
-            public string Title;
-            public UInt32 ClipSize;
-            public UInt32 IsEquipped;
-            public UInt32 EquipSlot;
+            public string Grade { get; set; }
+            public string Manufacturer { get; set; }
+            public string Type { get; set; }
+            public string Body { get; set; }
+            public string Grip { get; set; }
+            public string Magazine { get; set; }
+            public string Barrel { get; set; }
+            public string Sight { get; set; }
+            public string Stock { get; set; }
+            public string Action { get; set; }
+            public string Accuracy { get; set; }
+            public string Material { get; set; }
+            public string Prefix { get; set; }
+            public string Title { get; set; }
+            public UInt32 ClipSize { get; set; }
+            public UInt32 IsEquipped { get; set; }
+            public UInt32 EquipSlot { get; set; }
 
             public void Deserialize(Stream input)
             {
                 this.Grade = input.ReadStringASCIIU32();
                 this.Manufacturer = input.ReadStringASCIIU32();
                 this.Type = input.ReadStringASCIIU32();
-                this.ModelBody = input.ReadStringASCIIU32();
-                this.ModelGrip = input.ReadStringASCIIU32();
-                this.ModelMagazine = input.ReadStringASCIIU32();
-                this.ModelBarrel = input.ReadStringASCIIU32();
-                this.ModelSight = input.ReadStringASCIIU32();
-                this.ModelStock = input.ReadStringASCIIU32();
-                this.ModelAction = input.ReadStringASCIIU32();
-                this.ModelAccuracy = input.ReadStringASCIIU32();
-                this.ModelMaterial = input.ReadStringASCIIU32();
+                this.Body = input.ReadStringASCIIU32();
+                this.Grip = input.ReadStringASCIIU32();
+                this.Magazine = input.ReadStringASCIIU32();
+                this.Barrel = input.ReadStringASCIIU32();
+                this.Sight = input.ReadStringASCIIU32();
+                this.Stock = input.ReadStringASCIIU32();
+                this.Action = input.ReadStringASCIIU32();
+                this.Accuracy = input.ReadStringASCIIU32();
+                this.Material = input.ReadStringASCIIU32();
                 this.Prefix = input.ReadStringASCIIU32();
                 this.Title = input.ReadStringASCIIU32();
                 this.ClipSize = input.ReadValueU32();
@@ -168,15 +168,15 @@ namespace Gibbed.Borderlands.FileFormats
                 output.WriteStringASCIIU32(this.Grade);
                 output.WriteStringASCIIU32(this.Manufacturer);
                 output.WriteStringASCIIU32(this.Type);
-                output.WriteStringASCIIU32(this.ModelBody);
-                output.WriteStringASCIIU32(this.ModelGrip);
-                output.WriteStringASCIIU32(this.ModelMagazine);
-                output.WriteStringASCIIU32(this.ModelBarrel);
-                output.WriteStringASCIIU32(this.ModelSight);
-                output.WriteStringASCIIU32(this.ModelStock);
-                output.WriteStringASCIIU32(this.ModelAction);
-                output.WriteStringASCIIU32(this.ModelAccuracy);
-                output.WriteStringASCIIU32(this.ModelMaterial);
+                output.WriteStringASCIIU32(this.Body);
+                output.WriteStringASCIIU32(this.Grip);
+                output.WriteStringASCIIU32(this.Magazine);
+                output.WriteStringASCIIU32(this.Barrel);
+                output.WriteStringASCIIU32(this.Sight);
+                output.WriteStringASCIIU32(this.Stock);
+                output.WriteStringASCIIU32(this.Action);
+                output.WriteStringASCIIU32(this.Accuracy);
+                output.WriteStringASCIIU32(this.Material);
                 output.WriteStringASCIIU32(this.Prefix);
                 output.WriteStringASCIIU32(this.Title);
                 output.WriteValueU32(this.ClipSize);
@@ -384,11 +384,11 @@ namespace Gibbed.Borderlands.FileFormats
         public UInt32 Unknown08;
         public UInt32 Unknown09;
         public UInt32 Unknown10;
-        public List<AmmoPool> AmmoPools = new List<AmmoPool>();
-        public List<Item> Items = new List<Item>();
+        public List<AmmoPool> AmmoPools { get; set; }
+        public List<Item> Items { get; set; }
         public UInt32 BackpackSize { get; set; }
         public UInt32 BackpackCount;
-        public List<Weapon> Weapons = new List<Weapon>();
+        public List<Weapon> Weapons { get; set; }
         public byte[] Unknown16 = new byte[0];
         public List<string> VisitedZones = new List<string>();
         public string CurrentZone;
@@ -415,6 +415,9 @@ namespace Gibbed.Borderlands.FileFormats
 
         public Player()
         {
+            this.AmmoPools = new List<AmmoPool>();
+            this.Items = new List<Item>();
+            this.Weapons = new List<Weapon>();
             this.Skills = new List<Skill>();
         }
 
@@ -871,15 +874,15 @@ namespace Gibbed.Borderlands.FileFormats
                         EquipSlot = 1,
                         IsEquipped = 0,
 
-                        ModelAccuracy = "None",
-                        ModelAction = "None",
-                        ModelBarrel = "gd_weap_combat_shotgun.Barrel.barrel2",
-                        ModelBody = "gd_weap_combat_shotgun.Body.body1",
-                        ModelGrip = "gd_weap_combat_shotgun.Grip.grip3a",
-                        ModelMagazine = "gd_weap_combat_shotgun.mag.mag1",
-                        ModelMaterial = "gd_weap_shared_materialparts.ManufacturerMaterials.Material_Vladof_0_starter",
-                        ModelSight = "gd_weap_combat_shotgun.Sight.sightnone",
-                        ModelStock = "gd_weap_combat_shotgun.Stock.stock_none",
+                        Accuracy = "None",
+                        Action = "None",
+                        Barrel = "gd_weap_combat_shotgun.Barrel.barrel2",
+                        Body = "gd_weap_combat_shotgun.Body.body1",
+                        Grip = "gd_weap_combat_shotgun.Grip.grip3a",
+                        Magazine = "gd_weap_combat_shotgun.mag.mag1",
+                        Material = "gd_weap_shared_materialparts.ManufacturerMaterials.Material_Vladof_0_starter",
+                        Sight = "gd_weap_combat_shotgun.Sight.sightnone",
+                        Stock = "gd_weap_combat_shotgun.Stock.stock_none",
                     });
             }
             else
@@ -894,10 +897,10 @@ namespace Gibbed.Borderlands.FileFormats
                 player.AmmoPools.Add(
                     new AmmoPool()
                     {
-                        Unknown0 = "d_resources.AmmoResources.Ammo_Combat_Shotgun",
-                        Unknown1 = "d_resourcepools.AmmoPools.Ammo_Combat_Shotgun_Pool",
-                        Unknown2 = 30.0f,
-                        Unknown3 = 0,
+                        Name = "d_resources.AmmoResources.Ammo_Combat_Shotgun",
+                        Pool = "d_resourcepools.AmmoPools.Ammo_Combat_Shotgun_Pool",
+                        Quantity = 30.0f,
+                        UpgradeLevel = 0,
                     });
             }
             else
