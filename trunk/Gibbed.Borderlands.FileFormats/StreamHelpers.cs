@@ -19,6 +19,12 @@ namespace Gibbed.Borderlands.FileFormats
 
         public static void WriteStringASCIIU32(this Stream stream, string value)
         {
+            if (value.Length == 0)
+            {
+                stream.WriteValueS32(0);
+                return;
+            }
+
             stream.WriteValueS32(value.Length + 1);
             stream.WriteStringASCII(value);
             stream.WriteValueU8(0);

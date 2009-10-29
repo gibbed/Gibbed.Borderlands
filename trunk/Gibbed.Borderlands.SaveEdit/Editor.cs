@@ -67,29 +67,5 @@ namespace Gibbed.Borderlands.SaveEdit
             save.Serialize(output);
             output.Close();
         }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            List<Player.Weapon> copyWeapons = new List<Player.Weapon>();
-
-            foreach (Player.Weapon weapon in this.Player.Weapons)
-            {
-                if (weapon.Manufacturer == "gd_manufacturers.Manufacturers.Eridian")
-                {
-                    Player.Weapon newWeapon = weapon;
-                    newWeapon.IsEquipped = 0;
-                    newWeapon.EquipSlot = 0;
-                    copyWeapons.Add(newWeapon);
-                    copyWeapons.Add(newWeapon);
-                    copyWeapons.Add(newWeapon);
-                    copyWeapons.Add(newWeapon);
-                }
-            }
-
-            foreach (Player.Weapon weapon in copyWeapons)
-            {
-                this.Player.Weapons.Add(weapon);
-            }
-        }
     }
 }
