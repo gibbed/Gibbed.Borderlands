@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.IO;
 using Gibbed.Helpers;
@@ -12,14 +13,14 @@ namespace Gibbed.Borderlands.FileFormats
             public string Name { get; set; }
             public UInt32 Level { get; set; }
             public UInt32 Experience { get; set; }
-            public UInt32 Unknown3 { get; set; }
+            public Int32 ArtifactMode { get; set; }
 
             public void Deserialize(Stream input)
             {
                 this.Name = input.ReadStringASCIIU32();
                 this.Level = input.ReadValueU32();
                 this.Experience = input.ReadValueU32();
-                this.Unknown3 = input.ReadValueU32();
+                this.ArtifactMode = input.ReadValueS32();
             }
 
             public void Serialize(Stream output)
@@ -27,7 +28,7 @@ namespace Gibbed.Borderlands.FileFormats
                 output.WriteStringASCIIU32(this.Name);
                 output.WriteValueU32(this.Level);
                 output.WriteValueU32(this.Experience);
-                output.WriteValueU32(this.Unknown3);
+                output.WriteValueS32(this.ArtifactMode);
             }
 
             public override string ToString()
@@ -41,9 +42,9 @@ namespace Gibbed.Borderlands.FileFormats
                     rez += ", XP " + this.Experience.ToString();
                 }
 
-                if (this.Unknown3 != 0xFFFFFFFF)
+                if (this.ArtifactMode != 0xFFFFFFFF)
                 {
-                    rez += ", " + this.Unknown3.ToString("X8");
+                    rez += ", " + this.ArtifactMode.ToString("X8");
                 }
 
                 return rez;
@@ -55,14 +56,14 @@ namespace Gibbed.Borderlands.FileFormats
             public string Name { get; set; }
             public string Pool { get; set; }
             public float Quantity { get; set; }
-            public UInt32 UpgradeLevel { get; set; }
+            public Int32 UpgradeLevel { get; set; }
 
             public void Deserialize(Stream input)
             {
                 this.Name = input.ReadStringASCIIU32();
                 this.Pool = input.ReadStringASCIIU32();
                 this.Quantity = input.ReadValueF32();
-                this.UpgradeLevel = input.ReadValueU32();
+                this.UpgradeLevel = input.ReadValueS32();
             }
 
             public void Serialize(Stream output)
@@ -70,7 +71,7 @@ namespace Gibbed.Borderlands.FileFormats
                 output.WriteStringASCIIU32(this.Name);
                 output.WriteStringASCIIU32(this.Pool);
                 output.WriteValueF32(this.Quantity);
-                output.WriteValueU32(this.UpgradeLevel);
+                output.WriteValueS32(this.UpgradeLevel);
             }
         }
 
@@ -122,7 +123,7 @@ namespace Gibbed.Borderlands.FileFormats
             }
         }
 
-        public struct Weapon
+        public class Weapon
         {
             public string Grade { get; set; }
             public string Manufacturer { get; set; }
@@ -187,7 +188,7 @@ namespace Gibbed.Borderlands.FileFormats
 
         public class Mission
         {
-            public class Unknown3
+            public class Unknown4
             {
                 public string Unknown0;
                 public UInt32 Unknown1;
@@ -205,40 +206,43 @@ namespace Gibbed.Borderlands.FileFormats
                 }
             }
 
-            public UInt32 Unknown0;
+            public string Name;
             public UInt32 Unknown1;
             public UInt32 Unknown2;
-            public List<Unknown3> Unknown3s = new List<Unknown3>();
+            public UInt32 Unknown3;
+            public List<Unknown4> Unknown4s = new List<Unknown4>();
 
             public void Deserialize(Stream input)
             {
-                this.Unknown0 = input.ReadValueU32();
+                this.Name = input.ReadStringASCIIU32();
                 this.Unknown1 = input.ReadValueU32();
                 this.Unknown2 = input.ReadValueU32();
+                this.Unknown3 = input.ReadValueU32();
 
                 // States
                 {
                     uint count = input.ReadValueU32();
-                    this.Unknown3s.Clear();
+                    this.Unknown4s.Clear();
                     for (uint i = 0; i < count; i++)
                     {
-                        Unknown3 unknown3 = new Unknown3();
+                        Unknown4 unknown3 = new Unknown4();
                         unknown3.Deserialize(input);
-                        this.Unknown3s.Add(unknown3);
+                        this.Unknown4s.Add(unknown3);
                     }
                 }
             }
 
             public void Serialize(Stream output)
             {
-                output.WriteValueU32(this.Unknown0);
+                output.WriteStringASCIIU32(this.Name);
                 output.WriteValueU32(this.Unknown1);
                 output.WriteValueU32(this.Unknown2);
+                output.WriteValueU32(this.Unknown3);
 
                 // States
                 {
-                    output.WriteValueS32(this.Unknown3s.Count);
-                    foreach (Unknown3 unknown3 in this.Unknown3s)
+                    output.WriteValueS32(this.Unknown4s.Count);
+                    foreach (Unknown4 unknown3 in this.Unknown4s)
                     {
                         unknown3.Serialize(output);
                     }
@@ -248,11 +252,13 @@ namespace Gibbed.Borderlands.FileFormats
 
         public class MissionZone
         {
+            public UInt32 Unknown0;
             public string Name;
-            public Dictionary<string, Mission> Missions = new Dictionary<string, Mission>();
+            public List<Mission> Missions = new List<Mission>();
 
             public void Deserialize(Stream input)
             {
+                this.Unknown0 = input.ReadValueU32();
                 this.Name = input.ReadStringASCIIU32();
 
                 // Missions
@@ -261,25 +267,24 @@ namespace Gibbed.Borderlands.FileFormats
                     this.Missions.Clear();
                     for (uint i = 0; i < count; i++)
                     {
-                        string name = input.ReadStringASCIIU32();
                         Mission mission = new Mission();
                         mission.Deserialize(input);
-                        this.Missions.Add(name, mission);
+                        this.Missions.Add( mission);
                     }
                 }
             }
 
             public void Serialize(Stream output)
             {
+                output.WriteValueU32(this.Unknown0);
                 output.WriteStringASCIIU32(this.Name);
 
                 // Missions
                 {
                     output.WriteValueS32(this.Missions.Count);
-                    foreach (KeyValuePair<string, Mission> mission in this.Missions)
+                    foreach (Mission mission in this.Missions)
                     {
-                        output.WriteStringASCIIU32(mission.Key);
-                        mission.Value.Serialize(output);
+                        mission.Serialize(output);
                     }
                 }
             }
@@ -287,51 +292,57 @@ namespace Gibbed.Borderlands.FileFormats
 
         public class Echo
         {
-            public UInt32 Unknown0;
+            public string Name;
             public UInt32 Unknown1;
+            public UInt32 Unknown2;
 
             public void Deserialize(Stream input)
             {
-                this.Unknown0 = input.ReadValueU32();
+                this.Name = input.ReadStringASCIIU32();
                 this.Unknown1 = input.ReadValueU32();
+                this.Unknown2 = input.ReadValueU32();
             }
 
             public void Serialize(Stream output)
             {
-                output.WriteValueU32(this.Unknown0);
+                output.WriteStringASCIIU32(this.Name);
                 output.WriteValueU32(this.Unknown1);
+                output.WriteValueU32(this.Unknown2);
             }
         }
 
         public class EchoZone
         {
-            public Dictionary<string, Echo> Echoes = new Dictionary<string, Echo>();
+            public UInt32 Unknown0;
+            public List<Echo> Echoes = new List<Echo>();
 
             public void Deserialize(Stream input)
             {
+                this.Unknown0 = input.ReadValueU32();
+
                 // Echos
                 {
                     uint count = input.ReadValueU32();
                     this.Echoes.Clear();
                     for (uint i = 0; i < count; i++)
                     {
-                        string name = input.ReadStringASCIIU32();
                         Echo echo = new Echo();
                         echo.Deserialize(input);
-                        this.Echoes.Add(name, echo);
+                        this.Echoes.Add(echo);
                     }
                 }
             }
 
             public void Serialize(Stream output)
             {
+                output.WriteValueU32(this.Unknown0);
+
                 // Echos
                 {
                     output.WriteValueS32(this.Echoes.Count);
-                    foreach (KeyValuePair<string, Echo> echo in this.Echoes)
+                    foreach (Echo echo in this.Echoes)
                     {
-                        output.WriteStringASCIIU32(echo.Key);
-                        echo.Value.Serialize(output);
+                        echo.Serialize(output);
                     }
                 }
             }
@@ -352,6 +363,10 @@ namespace Gibbed.Borderlands.FileFormats
                 {
                     return "Siren";
                 }
+                else if (this.ClassType == "gd_mordecai.Character.CharacterClass_Mordecai")
+                {
+                    return "Hunter";
+                }
 
                 return this.ClassType;
             }
@@ -365,6 +380,10 @@ namespace Gibbed.Borderlands.FileFormats
                 else if (value == "Siren")
                 {
                     this.ClassType = "gd_lilith.Character.CharacterClass_Lilith";
+                }
+                else if (value == "Hunter")
+                {
+                    this.ClassType = "gd_mordecai.Character.CharacterClass_Mordecai";
                 }
                 else
                 {
@@ -390,7 +409,7 @@ namespace Gibbed.Borderlands.FileFormats
         public UInt32 BackpackCount;
         public List<Weapon> Weapons { get; set; }
         public byte[] Unknown16 = new byte[0];
-        public List<string> VisitedZones = new List<string>();
+        public List<string> VisitedStations = new List<string>();
         public string CurrentZone;
         //public ??? Unknown19 = ...
         //public ??? Unknown20 = ...
@@ -400,7 +419,7 @@ namespace Gibbed.Borderlands.FileFormats
         public UInt32 Unknown24;
         public UInt32 ExtraDataVersion;
         public UInt32 Unknown26;
-        public Dictionary<int, MissionZone> MissionZones = new Dictionary<int, MissionZone>();
+        public List<MissionZone> MissionZones = new List<MissionZone>();
         public UInt32 Unknown28;
         public string SaveTime;
         public string Name { get; set; }
@@ -410,8 +429,49 @@ namespace Gibbed.Borderlands.FileFormats
         public UInt32 Unknown34;
         public List<UInt32> Unknown35 = new List<UInt32>();
         public List<UInt32> Unknown36 = new List<UInt32>();
-        public Dictionary<int, EchoZone> EchoZones = new Dictionary<int, EchoZone>();
+        public List<EchoZone> EchoZones = new List<EchoZone>();
         public byte[] Unknown38 = new byte[0];
+
+        #region Colors
+        public string _Color1
+        {
+            get
+            {
+                return this.Color1.ToString("X8");
+            }
+
+            set
+            {
+                this.Color1 = UInt32.Parse(value, System.Globalization.NumberStyles.AllowHexSpecifier);
+            }
+        }
+
+        public String _Color2
+        {
+            get
+            {
+                return this.Color2.ToString("X8");
+            }
+
+            set
+            {
+                this.Color2 = UInt32.Parse(value, System.Globalization.NumberStyles.AllowHexSpecifier);
+            }
+        }
+
+        public String _Color3
+        {
+            get
+            {
+                return this.Color3.ToString("X8");
+            }
+
+            set
+            {
+                this.Color3 = UInt32.Parse(value, System.Globalization.NumberStyles.AllowHexSpecifier);
+            }
+        }
+        #endregion
 
         public Player()
         {
@@ -508,10 +568,10 @@ namespace Gibbed.Borderlands.FileFormats
             // Visited Zones
             {
                 uint count = input.ReadValueU32();
-                this.VisitedZones.Clear();
+                this.VisitedStations.Clear();
                 for (uint i = 0; i < count; i++)
                 {
-                    this.VisitedZones.Add(input.ReadStringASCIIU32());
+                    this.VisitedStations.Add(input.ReadStringASCIIU32());
                 }
             }
 
@@ -568,10 +628,9 @@ namespace Gibbed.Borderlands.FileFormats
                     this.MissionZones.Clear();
                     for (uint i = 0; i < count; i++)
                     {
-                        int index = input.ReadValueS32();
                         MissionZone missionZone = new MissionZone();
                         missionZone.Deserialize(input);
-                        this.MissionZones.Add(index, missionZone);
+                        this.MissionZones.Add(missionZone);
                     }
                 }
             }
@@ -626,10 +685,9 @@ namespace Gibbed.Borderlands.FileFormats
                     this.EchoZones.Clear();
                     for (uint i = 0; i < count; i++)
                     {
-                        int index = input.ReadValueS32();
                         EchoZone echoZone = new EchoZone();
                         echoZone.Deserialize(input);
-                        this.EchoZones.Add(index, echoZone);
+                        this.EchoZones.Add(echoZone);
                     }
                 }
             }
@@ -709,8 +767,8 @@ namespace Gibbed.Borderlands.FileFormats
 
             // Visited Zones
             {
-                output.WriteValueS32(this.VisitedZones.Count);
-                foreach (string visitedZone in this.VisitedZones)
+                output.WriteValueS32(this.VisitedStations.Count);
+                foreach (string visitedZone in this.VisitedStations)
                 {
                     output.WriteStringASCIIU32(visitedZone);
                 }
@@ -753,10 +811,9 @@ namespace Gibbed.Borderlands.FileFormats
                 // Mission Zones
                 {
                     output.WriteValueS32(this.MissionZones.Count);
-                    foreach (KeyValuePair<int, MissionZone> missionZone in this.MissionZones)
+                    foreach (MissionZone missionZone in this.MissionZones)
                     {
-                        output.WriteValueS32(missionZone.Key);
-                        missionZone.Value.Serialize(output);
+                        missionZone.Serialize(output);
                     }
                 }
             }
@@ -806,10 +863,9 @@ namespace Gibbed.Borderlands.FileFormats
                 // Echo Zones
                 {
                     output.WriteValueS32(this.EchoZones.Count);
-                    foreach (KeyValuePair<int, EchoZone> echoZone in this.EchoZones)
+                    foreach (EchoZone echoZone in this.EchoZones)
                     {
-                        output.WriteValueS32(echoZone.Key);
-                        echoZone.Value.Serialize(output);
+                        echoZone.Serialize(output);
                     }
                 }
             }
@@ -927,41 +983,51 @@ namespace Gibbed.Borderlands.FileFormats
             MissionZone missionZone;
 
             missionZone = new MissionZone();
+            missionZone.Unknown0 = 0;
             missionZone.Name = "Z0_Missions.Missions.M_IntroStateSaver";
-            missionZone.Missions.Add("Z0_Missions.Missions.M_IntroStateSaver",
+            missionZone.Missions.Add(
                 new Mission()
                 {
-                    Unknown0 = 2,
-                    Unknown1 = 0,
+                    Name = "Z0_Missions.Missions.M_IntroStateSaver",
+                    Unknown1 = 2,
                     Unknown2 = 0,
+                    Unknown3 = 0,
                 });
-            player.MissionZones.Add(0, missionZone);
+            player.MissionZones.Add(missionZone);
 
             missionZone = new MissionZone();
+            missionZone.Unknown0 = 1;
             missionZone.Name = "Z0_Missions.Missions.M_IntroStateSaver";
-            missionZone.Missions.Add("Z0_Missions.Missions.M_IntroStateSaver",
+            missionZone.Missions.Add(
                 new Mission()
                 {
-                    Unknown0 = 2,
-                    Unknown1 = 0,
+                    Name = "Z0_Missions.Missions.M_IntroStateSaver",
+                    Unknown1 = 2,
                     Unknown2 = 0,
+                    Unknown3 = 0,
                 });
-            player.MissionZones.Add(1, missionZone);
+            player.MissionZones.Add(missionZone);
 
             missionZone = new MissionZone();
+            missionZone.Unknown0 = 2;
             missionZone.Name = "Z0_Missions.Missions.M_IntroStateSaver";
-            missionZone.Missions.Add("Z0_Missions.Missions.M_IntroStateSaver",
+            missionZone.Missions.Add(
                 new Mission()
                 {
-                    Unknown0 = 2,
-                    Unknown1 = 0,
+                    Name = "Z0_Missions.Missions.M_IntroStateSaver",
+                    Unknown1 = 2,
                     Unknown2 = 0,
+                    Unknown3 = 0,
                 });
-            player.MissionZones.Add(2, missionZone);
+            player.MissionZones.Add(missionZone);
 
 
             // Echo Zones
-            player.EchoZones.Add(0, new EchoZone());
+            player.EchoZones.Add(
+                new EchoZone()
+                {
+                    Unknown0 = 0,
+                });
 
             // Unknowns
             player.Unknown02 = 0;
