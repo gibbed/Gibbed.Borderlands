@@ -42,7 +42,7 @@ namespace Gibbed.Borderlands.FileFormats
                     rez += ", XP " + this.Experience.ToString();
                 }
 
-                if (this.ArtifactMode != 0xFFFFFFFF)
+                if (this.ArtifactMode != -1)
                 {
                     rez += ", " + this.ArtifactMode.ToString("X8");
                 }
@@ -250,16 +250,16 @@ namespace Gibbed.Borderlands.FileFormats
             }
         }
 
-        public class MissionZone
+        public class MissionPlaythrough
         {
-            public UInt32 Unknown0;
-            public string Name;
+            public UInt32 Playthrough;
+            public string ActiveMission;
             public List<Mission> Missions = new List<Mission>();
 
             public void Deserialize(Stream input)
             {
-                this.Unknown0 = input.ReadValueU32();
-                this.Name = input.ReadStringASCIIU32();
+                this.Playthrough = input.ReadValueU32();
+                this.ActiveMission = input.ReadStringASCIIU32();
 
                 // Missions
                 {
@@ -276,8 +276,8 @@ namespace Gibbed.Borderlands.FileFormats
 
             public void Serialize(Stream output)
             {
-                output.WriteValueU32(this.Unknown0);
-                output.WriteStringASCIIU32(this.Name);
+                output.WriteValueU32(this.Playthrough);
+                output.WriteStringASCIIU32(this.ActiveMission);
 
                 // Missions
                 {
@@ -311,14 +311,14 @@ namespace Gibbed.Borderlands.FileFormats
             }
         }
 
-        public class EchoZone
+        public class EchoPlaythrough
         {
-            public UInt32 Unknown0;
+            public UInt32 Playthrough;
             public List<Echo> Echoes = new List<Echo>();
 
             public void Deserialize(Stream input)
             {
-                this.Unknown0 = input.ReadValueU32();
+                this.Playthrough = input.ReadValueU32();
 
                 // Echos
                 {
@@ -335,7 +335,7 @@ namespace Gibbed.Borderlands.FileFormats
 
             public void Serialize(Stream output)
             {
-                output.WriteValueU32(this.Unknown0);
+                output.WriteValueU32(this.Playthrough);
 
                 // Echos
                 {
@@ -349,55 +349,13 @@ namespace Gibbed.Borderlands.FileFormats
         }
 
         public UInt32 Version;
-        public string ClassType;
-
-        public string ClassName
-        {
-            get
-            {
-                if (this.ClassType == "gd_Brick.Character.CharacterClass_Brick")
-                {
-                    return "Berserker";
-                }
-                else if (this.ClassType == "gd_lilith.Character.CharacterClass_Lilith")
-                {
-                    return "Siren";
-                }
-                else if (this.ClassType == "gd_mordecai.Character.CharacterClass_Mordecai")
-                {
-                    return "Hunter";
-                }
-
-                return this.ClassType;
-            }
-
-            set
-            {
-                if (value == "Berserker")
-                {
-                    this.ClassType = "gd_Brick.Character.CharacterClass_Brick";
-                }
-                else if (value == "Siren")
-                {
-                    this.ClassType = "gd_lilith.Character.CharacterClass_Lilith";
-                }
-                else if (value == "Hunter")
-                {
-                    this.ClassType = "gd_mordecai.Character.CharacterClass_Mordecai";
-                }
-                else
-                {
-                    this.ClassType = value;
-                }
-            }
-        }
-
+        public string Character { get; set; }
         public UInt32 Level { get; set; }
         public UInt32 Experience { get; set; }
-        public UInt32 Unknown02;
+        public UInt32 SkillPoints { get; set; }
         public UInt32 Unknown03;
         public UInt32 Money { get; set; }
-        public UInt32 Unknown05;
+        public UInt32 MaybePlaythroughUnlocked { get; set; }
         public List<Skill> Skills { get; set; }
         public UInt32 Unknown07;
         public UInt32 Unknown08;
@@ -409,8 +367,8 @@ namespace Gibbed.Borderlands.FileFormats
         public UInt32 BackpackCount;
         public List<Weapon> Weapons { get; set; }
         public byte[] Unknown16 = new byte[0];
-        public List<string> VisitedStations = new List<string>();
-        public string CurrentZone;
+        public List<string> VisitedStations { get; set; }
+        public string CurrentStation { get; set; }
         //public ??? Unknown19 = ...
         //public ??? Unknown20 = ...
         public string Unknown21;
@@ -419,7 +377,7 @@ namespace Gibbed.Borderlands.FileFormats
         public UInt32 Unknown24;
         public UInt32 ExtraDataVersion;
         public UInt32 Unknown26;
-        public List<MissionZone> MissionZones = new List<MissionZone>();
+        public List<MissionPlaythrough> MissionPlaythroughs = new List<MissionPlaythrough>();
         public UInt32 Unknown28;
         public string SaveTime;
         public string Name { get; set; }
@@ -429,7 +387,7 @@ namespace Gibbed.Borderlands.FileFormats
         public UInt32 Unknown34;
         public List<UInt32> Unknown35 = new List<UInt32>();
         public List<UInt32> Unknown36 = new List<UInt32>();
-        public List<EchoZone> EchoZones = new List<EchoZone>();
+        public List<EchoPlaythrough> EchoPlaythroughs = new List<EchoPlaythrough>();
         public byte[] Unknown38 = new byte[0];
 
         #region Colors
@@ -479,6 +437,7 @@ namespace Gibbed.Borderlands.FileFormats
             this.Items = new List<Item>();
             this.Weapons = new List<Weapon>();
             this.Skills = new List<Skill>();
+            this.VisitedStations = new List<string>();
         }
 
         public void Deserialize(Stream input)
@@ -494,13 +453,13 @@ namespace Gibbed.Borderlands.FileFormats
                 throw new FormatException("unsupported player data version (" + this.Version.ToString() + ")");
             }
 
-            this.ClassType = input.ReadStringASCIIU32();
+            this.Character = input.ReadStringASCIIU32();
             this.Level = input.ReadValueU32();
             this.Experience = input.ReadValueU32();
-            this.Unknown02 = input.ReadValueU32();
+            this.SkillPoints = input.ReadValueU32();
             this.Unknown03 = input.ReadValueU32();
             this.Money = input.ReadValueU32();
-            this.Unknown05 = input.ReadValueU32();
+            this.MaybePlaythroughUnlocked = input.ReadValueU32();
 
             // Skills
             {
@@ -575,7 +534,7 @@ namespace Gibbed.Borderlands.FileFormats
                 }
             }
 
-            this.CurrentZone = input.ReadStringASCIIU32();
+            this.CurrentStation = input.ReadStringASCIIU32();
 
             // Unknown19
             {
@@ -625,12 +584,12 @@ namespace Gibbed.Borderlands.FileFormats
                 // Mission Zones
                 {
                     uint count = input.ReadValueU32();
-                    this.MissionZones.Clear();
+                    this.MissionPlaythroughs.Clear();
                     for (uint i = 0; i < count; i++)
                     {
-                        MissionZone missionZone = new MissionZone();
+                        MissionPlaythrough missionZone = new MissionPlaythrough();
                         missionZone.Deserialize(input);
-                        this.MissionZones.Add(missionZone);
+                        this.MissionPlaythroughs.Add(missionZone);
                     }
                 }
             }
@@ -682,12 +641,12 @@ namespace Gibbed.Borderlands.FileFormats
                 // Echo Zones
                 {
                     uint count = input.ReadValueU32();
-                    this.EchoZones.Clear();
+                    this.EchoPlaythroughs.Clear();
                     for (uint i = 0; i < count; i++)
                     {
-                        EchoZone echoZone = new EchoZone();
+                        EchoPlaythrough echoZone = new EchoPlaythrough();
                         echoZone.Deserialize(input);
-                        this.EchoZones.Add(echoZone);
+                        this.EchoPlaythroughs.Add(echoZone);
                     }
                 }
             }
@@ -707,13 +666,13 @@ namespace Gibbed.Borderlands.FileFormats
         {
             output.WriteStringASCII("PLYR");
             output.WriteValueU32(this.Version);
-            output.WriteStringASCIIU32(this.ClassType);
+            output.WriteStringASCIIU32(this.Character);
             output.WriteValueU32(this.Level);
             output.WriteValueU32(this.Experience);
-            output.WriteValueU32(this.Unknown02);
+            output.WriteValueU32(this.SkillPoints);
             output.WriteValueU32(this.Unknown03);
             output.WriteValueU32(this.Money);
-            output.WriteValueU32(this.Unknown05);
+            output.WriteValueU32(this.MaybePlaythroughUnlocked);
 
             // Skills
             {
@@ -774,7 +733,7 @@ namespace Gibbed.Borderlands.FileFormats
                 }
             }
 
-            output.WriteStringASCIIU32(this.CurrentZone);
+            output.WriteStringASCIIU32(this.CurrentStation);
 
             // Unknown19
             {
@@ -810,8 +769,8 @@ namespace Gibbed.Borderlands.FileFormats
             {
                 // Mission Zones
                 {
-                    output.WriteValueS32(this.MissionZones.Count);
-                    foreach (MissionZone missionZone in this.MissionZones)
+                    output.WriteValueS32(this.MissionPlaythroughs.Count);
+                    foreach (MissionPlaythrough missionZone in this.MissionPlaythroughs)
                     {
                         missionZone.Serialize(output);
                     }
@@ -862,8 +821,8 @@ namespace Gibbed.Borderlands.FileFormats
             {
                 // Echo Zones
                 {
-                    output.WriteValueS32(this.EchoZones.Count);
-                    foreach (EchoZone echoZone in this.EchoZones)
+                    output.WriteValueS32(this.EchoPlaythroughs.Count);
+                    foreach (EchoPlaythrough echoZone in this.EchoPlaythroughs)
                     {
                         echoZone.Serialize(output);
                     }
@@ -880,7 +839,7 @@ namespace Gibbed.Borderlands.FileFormats
             }
         }
 
-        public static Player Default(Character character)
+        public static Player Default(CharacterType character)
         {
             Player player = new Player();
 
@@ -891,16 +850,16 @@ namespace Gibbed.Borderlands.FileFormats
             player.ExtraDataVersion = 35;
 
             // Zone
-            player.CurrentZone = "None";
+            player.CurrentStation = "None";
 
             // Attributes
             player.Level = 1;
             player.Experience = 0;
             player.Money = 80;
 
-            if (character == Character.Berserker)
+            if (character == CharacterType.Berserker)
             {
-                player.ClassType = "gd_Brick.Character.CharacterClass_Brick";
+                player.Character = "gd_Brick.Character.CharacterClass_Brick";
             }
             else
             {
@@ -912,7 +871,7 @@ namespace Gibbed.Borderlands.FileFormats
             player.BackpackSize = 12;
 
             // Weapons
-            if (character == Character.Berserker)
+            if (character == CharacterType.Berserker)
             {
                 // Shitty Shotgun HOORAY~
                 player.Weapons.Add(
@@ -947,7 +906,7 @@ namespace Gibbed.Borderlands.FileFormats
             }
 
             // Ammo
-            if (character == Character.Berserker)
+            if (character == CharacterType.Berserker)
             {
                 // Shotgun Ammo
                 player.AmmoPools.Add(
@@ -966,7 +925,7 @@ namespace Gibbed.Borderlands.FileFormats
 
             // New-U
 
-            if (character == Character.Berserker)
+            if (character == CharacterType.Berserker)
             {
                 player.Name = "Brick";
             }
@@ -980,11 +939,11 @@ namespace Gibbed.Borderlands.FileFormats
             player.Color3 = 0xFF6699B3;
 
             // Missions
-            MissionZone missionZone;
+            MissionPlaythrough missionZone;
 
-            missionZone = new MissionZone();
-            missionZone.Unknown0 = 0;
-            missionZone.Name = "Z0_Missions.Missions.M_IntroStateSaver";
+            missionZone = new MissionPlaythrough();
+            missionZone.Playthrough = 0;
+            missionZone.ActiveMission = "Z0_Missions.Missions.M_IntroStateSaver";
             missionZone.Missions.Add(
                 new Mission()
                 {
@@ -993,11 +952,11 @@ namespace Gibbed.Borderlands.FileFormats
                     Unknown2 = 0,
                     Unknown3 = 0,
                 });
-            player.MissionZones.Add(missionZone);
+            player.MissionPlaythroughs.Add(missionZone);
 
-            missionZone = new MissionZone();
-            missionZone.Unknown0 = 1;
-            missionZone.Name = "Z0_Missions.Missions.M_IntroStateSaver";
+            missionZone = new MissionPlaythrough();
+            missionZone.Playthrough = 1;
+            missionZone.ActiveMission = "Z0_Missions.Missions.M_IntroStateSaver";
             missionZone.Missions.Add(
                 new Mission()
                 {
@@ -1006,11 +965,11 @@ namespace Gibbed.Borderlands.FileFormats
                     Unknown2 = 0,
                     Unknown3 = 0,
                 });
-            player.MissionZones.Add(missionZone);
+            player.MissionPlaythroughs.Add(missionZone);
 
-            missionZone = new MissionZone();
-            missionZone.Unknown0 = 2;
-            missionZone.Name = "Z0_Missions.Missions.M_IntroStateSaver";
+            missionZone = new MissionPlaythrough();
+            missionZone.Playthrough = 2;
+            missionZone.ActiveMission = "Z0_Missions.Missions.M_IntroStateSaver";
             missionZone.Missions.Add(
                 new Mission()
                 {
@@ -1019,20 +978,20 @@ namespace Gibbed.Borderlands.FileFormats
                     Unknown2 = 0,
                     Unknown3 = 0,
                 });
-            player.MissionZones.Add(missionZone);
+            player.MissionPlaythroughs.Add(missionZone);
 
 
             // Echo Zones
-            player.EchoZones.Add(
-                new EchoZone()
+            player.EchoPlaythroughs.Add(
+                new EchoPlaythrough()
                 {
-                    Unknown0 = 0,
+                    Playthrough = 0,
                 });
 
             // Unknowns
-            player.Unknown02 = 0;
+            player.SkillPoints = 0;
             player.Unknown03 = 0;
-            player.Unknown05 = 0;
+            player.MaybePlaythroughUnlocked = 0;
             player.Unknown07 = 0;
             player.Unknown08 = 0;
             player.Unknown09 = 0;

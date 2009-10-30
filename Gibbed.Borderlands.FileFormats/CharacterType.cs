@@ -1,6 +1,6 @@
 ﻿namespace Gibbed.Borderlands.FileFormats
 {
-    public enum Character
+    public enum CharacterType
     {
         Berserker,
         Siren,
