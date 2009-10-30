@@ -40,6 +40,7 @@
             System.Windows.Forms.Label color3Label;
             System.Windows.Forms.Label currentStationLabel;
             System.Windows.Forms.Label skillPointsLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editor));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.newButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.newBerserkerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,8 +52,8 @@
             this.mainTabs = new System.Windows.Forms.TabControl();
             this.playerTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.playerSource = new System.Windows.Forms.BindingSource(this.components);
             this.currentStationComboBox = new System.Windows.Forms.ComboBox();
+            this.playerSource = new System.Windows.Forms.BindingSource(this.components);
             this.characterComboBox = new System.Windows.Forms.ComboBox();
             this.levelNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.experienceNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -413,10 +414,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(586, 269);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // playerSource
-            // 
-            this.playerSource.DataSource = typeof(Gibbed.Borderlands.FileFormats.Player);
-            // 
             // currentStationComboBox
             // 
             this.currentStationComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.playerSource, "CurrentStation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -482,6 +479,10 @@
             this.currentStationComboBox.Name = "currentStationComboBox";
             this.currentStationComboBox.Size = new System.Drawing.Size(121, 21);
             this.currentStationComboBox.TabIndex = 12;
+            // 
+            // playerSource
+            // 
+            this.playerSource.DataSource = typeof(Gibbed.Borderlands.FileFormats.Player);
             // 
             // characterComboBox
             // 
@@ -1015,6 +1016,7 @@
             this.ClientSize = new System.Drawing.Size(624, 341);
             this.Controls.Add(this.mainTabs);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Editor";
             this.Text = "Gibbed\'s Borderlands Save Editor";
             this.toolStrip1.ResumeLayout(false);
