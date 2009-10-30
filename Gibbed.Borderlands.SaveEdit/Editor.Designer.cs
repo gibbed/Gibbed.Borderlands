@@ -1018,7 +1018,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Editor";
-            this.Text = "Gibbed\'s Borderlands Save Editor";
+            this.Text = "Gibbed\'s Borderlands Save Editor (Revision 9)";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.mainTabs.ResumeLayout(false);
