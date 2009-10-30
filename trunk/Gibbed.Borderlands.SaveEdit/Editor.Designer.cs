@@ -32,12 +32,14 @@
             System.Windows.Forms.Label experienceLabel;
             System.Windows.Forms.Label levelLabel;
             System.Windows.Forms.Label moneyLabel;
-            System.Windows.Forms.Label classLabel;
+            System.Windows.Forms.Label characterLabel;
             System.Windows.Forms.Label backpackSizeLabel;
             System.Windows.Forms.Label nameLabel;
             System.Windows.Forms.Label color1Label;
             System.Windows.Forms.Label color2Label;
             System.Windows.Forms.Label color3Label;
+            System.Windows.Forms.Label currentStationLabel;
+            System.Windows.Forms.Label skillPointsLabel;
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.newButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.newBerserkerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,34 +49,24 @@
             this.openButton = new System.Windows.Forms.ToolStripButton();
             this.saveButton = new System.Windows.Forms.ToolStripButton();
             this.mainTabs = new System.Windows.Forms.TabControl();
-            this.characterTab = new System.Windows.Forms.TabPage();
+            this.playerTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.backpackSizeNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.classNameComboBox = new System.Windows.Forms.ComboBox();
+            this.playerSource = new System.Windows.Forms.BindingSource(this.components);
+            this.currentStationComboBox = new System.Windows.Forms.ComboBox();
+            this.characterComboBox = new System.Windows.Forms.ComboBox();
             this.levelNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.moneyNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.experienceNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.skillPointsNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.backpackSizeNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.moneyNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.newuTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.color3TextBox = new System.Windows.Forms.TextBox();
+            this.color2TextBox = new System.Windows.Forms.TextBox();
+            this.color1TextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.weaponsTab = new System.Windows.Forms.TabPage();
             this.weaponsDataGridView = new System.Windows.Forms.DataGridView();
-            this.weaponsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.itemsTab = new System.Windows.Forms.TabPage();
-            this.itemsDataGridView = new System.Windows.Forms.DataGridView();
-            this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ammoPoolsTab = new System.Windows.Forms.TabPage();
-            this.ammoPoolsDataGridView = new System.Windows.Forms.DataGridView();
-            this.ammoPoolsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.skillsTab = new System.Windows.Forms.TabPage();
-            this.skillsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this._Color1TextBox = new System.Windows.Forms.TextBox();
-            this.color2TextBox = new System.Windows.Forms.TextBox();
-            this._Color3TextBox = new System.Windows.Forms.TextBox();
-            this.playerSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,6 +84,9 @@
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weaponsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemsTab = new System.Windows.Forms.TabPage();
+            this.itemsDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,32 +97,45 @@
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ammoPoolsTab = new System.Windows.Forms.TabPage();
+            this.ammoPoolsDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ammoPoolsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.skillsTab = new System.Windows.Forms.TabPage();
             this.skillsDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.skillsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             experienceLabel = new System.Windows.Forms.Label();
             levelLabel = new System.Windows.Forms.Label();
             moneyLabel = new System.Windows.Forms.Label();
-            classLabel = new System.Windows.Forms.Label();
+            characterLabel = new System.Windows.Forms.Label();
             backpackSizeLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             color1Label = new System.Windows.Forms.Label();
             color2Label = new System.Windows.Forms.Label();
             color3Label = new System.Windows.Forms.Label();
+            currentStationLabel = new System.Windows.Forms.Label();
+            skillPointsLabel = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.mainTabs.SuspendLayout();
-            this.characterTab.SuspendLayout();
+            this.playerTab.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.backpackSizeNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.moneyNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.experienceNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skillPointsNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backpackSizeNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moneyNumericUpDown)).BeginInit();
             this.newuTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.weaponsTab.SuspendLayout();
@@ -140,9 +148,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ammoPoolsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ammoPoolsBindingSource)).BeginInit();
             this.skillsTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.skillsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skillsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skillsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // experienceLabel
@@ -171,29 +178,29 @@
             // 
             moneyLabel.AutoSize = true;
             moneyLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            moneyLabel.Location = new System.Drawing.Point(43, 79);
+            moneyLabel.Location = new System.Drawing.Point(43, 105);
             moneyLabel.Name = "moneyLabel";
             moneyLabel.Size = new System.Drawing.Size(42, 26);
             moneyLabel.TabIndex = 4;
             moneyLabel.Text = "Money:";
             moneyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // classLabel
+            // characterLabel
             // 
-            classLabel.AutoSize = true;
-            classLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            classLabel.Location = new System.Drawing.Point(50, 0);
-            classLabel.Name = "classLabel";
-            classLabel.Size = new System.Drawing.Size(35, 27);
-            classLabel.TabIndex = 8;
-            classLabel.Text = "Class:";
-            classLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            characterLabel.AutoSize = true;
+            characterLabel.Dock = System.Windows.Forms.DockStyle.Right;
+            characterLabel.Location = new System.Drawing.Point(29, 0);
+            characterLabel.Name = "characterLabel";
+            characterLabel.Size = new System.Drawing.Size(56, 27);
+            characterLabel.TabIndex = 8;
+            characterLabel.Text = "Character:";
+            characterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // backpackSizeLabel
             // 
             backpackSizeLabel.AutoSize = true;
             backpackSizeLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            backpackSizeLabel.Location = new System.Drawing.Point(3, 105);
+            backpackSizeLabel.Location = new System.Drawing.Point(3, 158);
             backpackSizeLabel.Name = "backpackSizeLabel";
             backpackSizeLabel.Size = new System.Drawing.Size(82, 26);
             backpackSizeLabel.TabIndex = 10;
@@ -210,6 +217,61 @@
             nameLabel.TabIndex = 7;
             nameLabel.Text = "Name:";
             nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // color1Label
+            // 
+            color1Label.AutoSize = true;
+            color1Label.Dock = System.Windows.Forms.DockStyle.Right;
+            color1Label.Location = new System.Drawing.Point(3, 26);
+            color1Label.Name = "color1Label";
+            color1Label.Size = new System.Drawing.Size(43, 26);
+            color1Label.TabIndex = 8;
+            color1Label.Text = "Color 1:";
+            color1Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // color2Label
+            // 
+            color2Label.AutoSize = true;
+            color2Label.Dock = System.Windows.Forms.DockStyle.Right;
+            color2Label.Location = new System.Drawing.Point(3, 52);
+            color2Label.Name = "color2Label";
+            color2Label.Size = new System.Drawing.Size(43, 26);
+            color2Label.TabIndex = 9;
+            color2Label.Text = "Color 2:";
+            color2Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // color3Label
+            // 
+            color3Label.AutoSize = true;
+            color3Label.Dock = System.Windows.Forms.DockStyle.Right;
+            color3Label.Location = new System.Drawing.Point(3, 78);
+            color3Label.Name = "color3Label";
+            color3Label.Size = new System.Drawing.Size(43, 26);
+            color3Label.TabIndex = 10;
+            color3Label.Text = "Color 3:";
+            color3Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // currentStationLabel
+            // 
+            currentStationLabel.AutoSize = true;
+            currentStationLabel.Dock = System.Windows.Forms.DockStyle.Right;
+            currentStationLabel.Location = new System.Drawing.Point(5, 131);
+            currentStationLabel.Name = "currentStationLabel";
+            currentStationLabel.Size = new System.Drawing.Size(80, 27);
+            currentStationLabel.TabIndex = 11;
+            currentStationLabel.Text = "Current Station:";
+            currentStationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // skillPointsLabel
+            // 
+            skillPointsLabel.AutoSize = true;
+            skillPointsLabel.Dock = System.Windows.Forms.DockStyle.Right;
+            skillPointsLabel.Location = new System.Drawing.Point(24, 79);
+            skillPointsLabel.Name = "skillPointsLabel";
+            skillPointsLabel.Size = new System.Drawing.Size(61, 26);
+            skillPointsLabel.TabIndex = 12;
+            skillPointsLabel.Text = "Skill Points:";
+            skillPointsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // toolStrip1
             // 
@@ -290,7 +352,7 @@
             this.mainTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainTabs.Controls.Add(this.characterTab);
+            this.mainTabs.Controls.Add(this.playerTab);
             this.mainTabs.Controls.Add(this.newuTab);
             this.mainTabs.Controls.Add(this.weaponsTab);
             this.mainTabs.Controls.Add(this.itemsTab);
@@ -299,20 +361,20 @@
             this.mainTabs.Location = new System.Drawing.Point(12, 28);
             this.mainTabs.Name = "mainTabs";
             this.mainTabs.SelectedIndex = 0;
-            this.mainTabs.Size = new System.Drawing.Size(600, 241);
+            this.mainTabs.Size = new System.Drawing.Size(600, 301);
             this.mainTabs.TabIndex = 1;
             // 
-            // characterTab
+            // playerTab
             // 
-            this.characterTab.AutoScroll = true;
-            this.characterTab.Controls.Add(this.tableLayoutPanel1);
-            this.characterTab.Location = new System.Drawing.Point(4, 22);
-            this.characterTab.Name = "characterTab";
-            this.characterTab.Padding = new System.Windows.Forms.Padding(3);
-            this.characterTab.Size = new System.Drawing.Size(592, 215);
-            this.characterTab.TabIndex = 0;
-            this.characterTab.Text = "Character";
-            this.characterTab.UseVisualStyleBackColor = true;
+            this.playerTab.AutoScroll = true;
+            this.playerTab.Controls.Add(this.tableLayoutPanel1);
+            this.playerTab.Location = new System.Drawing.Point(4, 22);
+            this.playerTab.Name = "playerTab";
+            this.playerTab.Padding = new System.Windows.Forms.Padding(3);
+            this.playerTab.Size = new System.Drawing.Size(592, 275);
+            this.playerTab.TabIndex = 0;
+            this.playerTab.Text = "Player";
+            this.playerTab.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -320,20 +382,26 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(backpackSizeLabel, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.backpackSizeNumericUpDown, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.classNameComboBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(classLabel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(currentStationLabel, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.currentStationComboBox, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.characterComboBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(characterLabel, 0, 1);
             this.tableLayoutPanel1.Controls.Add(levelLabel, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.levelNumericUpDown, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(moneyLabel, 0, 4);
             this.tableLayoutPanel1.Controls.Add(experienceLabel, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.moneyNumericUpDown, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.experienceNumericUpDown, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(skillPointsLabel, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.skillPointsNumericUpDown, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.backpackSizeNumericUpDown, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.moneyNumericUpDown, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(backpackSizeLabel, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(moneyLabel, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 9;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -342,41 +410,97 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(586, 209);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(586, 269);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // backpackSizeNumericUpDown
+            // playerSource
             // 
-            this.backpackSizeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.playerSource, "BackpackSize", true));
-            this.backpackSizeNumericUpDown.Location = new System.Drawing.Point(91, 108);
-            this.backpackSizeNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.backpackSizeNumericUpDown.Name = "backpackSizeNumericUpDown";
-            this.backpackSizeNumericUpDown.Size = new System.Drawing.Size(120, 20);
-            this.backpackSizeNumericUpDown.TabIndex = 11;
+            this.playerSource.DataSource = typeof(Gibbed.Borderlands.FileFormats.Player);
             // 
-            // classNameComboBox
+            // currentStationComboBox
             // 
-            this.classNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.playerSource, "ClassName", true));
-            this.classNameComboBox.Items.AddRange(new object[] {
+            this.currentStationComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.playerSource, "CurrentStation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.currentStationComboBox.FormattingEnabled = true;
+            this.currentStationComboBox.Items.AddRange(new object[] {
+            "None",
+            "AqueductEncampment",
+            "AridHillsEntrance",
+            "AridMine",
+            "Bunker",
+            "BunkerEntrance",
+            "cauldren",
+            "Crimson",
+            "CrimsonLanceBunker",
+            "Descent1",
+            "Digsite",
+            "DryEntranceSave",
+            "EntranceToSkagGully",
+            "Firestone",
+            "HeadlandElectricalStation",
+            "Interlude1Entrance",
+            "Interlude2Cave",
+            "KCanyon",
+            "Lucky\'sLastChanceWateringHole",
+            "LudicrousSpeedway",
+            "MiddleofNoWhere",
+            "midpoint",
+            "MineEntrance",
+            "NewHaven",
+            "Oasis",
+            "OasisCheckpoint",
+            "OldHavenEntrance",
+            "PirateBay",
+            "PitArena",
+            "RuinsArena",
+            "SaltFlats",
+            "ScrapGate",
+            "Scraple",
+            "ScrapMidpoint",
+            "ScrapOverlook",
+            "Scrapyard",
+            "SewerArena",
+            "ShantyTown",
+            "SkagGully",
+            "SkullBandit",
+            "TetanusWarren",
+            "TetanusWarrensEntrance",
+            "TheCesspool",
+            "TheLostCave",
+            "TheUnderpass",
+            "TheVault",
+            "Thor",
+            "Thor_Cave",
+            "Thor_CrimsonEnclave",
+            "Thor_Digtown",
+            "Thor_TheDescent",
+            "TrashCoast",
+            "TrashEntranceNorth",
+            "TrashEntranceSouth",
+            "Tunnel",
+            "UpperSeeps"});
+            this.currentStationComboBox.Location = new System.Drawing.Point(91, 134);
+            this.currentStationComboBox.Name = "currentStationComboBox";
+            this.currentStationComboBox.Size = new System.Drawing.Size(121, 21);
+            this.currentStationComboBox.TabIndex = 12;
+            // 
+            // characterComboBox
+            // 
+            this.characterComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.playerSource, "Character", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.characterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.characterComboBox.Items.AddRange(new object[] {
             "Berserker",
             "Hunter",
             "Siren",
             "Soldier"});
-            this.classNameComboBox.Location = new System.Drawing.Point(91, 3);
-            this.classNameComboBox.Name = "classNameComboBox";
-            this.classNameComboBox.Size = new System.Drawing.Size(121, 21);
-            this.classNameComboBox.Sorted = true;
-            this.classNameComboBox.TabIndex = 9;
+            this.characterComboBox.Location = new System.Drawing.Point(91, 3);
+            this.characterComboBox.Name = "characterComboBox";
+            this.characterComboBox.Size = new System.Drawing.Size(121, 21);
+            this.characterComboBox.Sorted = true;
+            this.characterComboBox.TabIndex = 9;
             // 
             // levelNumericUpDown
             // 
-            this.levelNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.playerSource, "Level", true));
+            this.levelNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.playerSource, "Level", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.levelNumericUpDown.Location = new System.Drawing.Point(91, 30);
             this.levelNumericUpDown.Maximum = new decimal(new int[] {
             50,
@@ -397,22 +521,9 @@
             0,
             0});
             // 
-            // moneyNumericUpDown
-            // 
-            this.moneyNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.playerSource, "Money", true));
-            this.moneyNumericUpDown.Location = new System.Drawing.Point(91, 82);
-            this.moneyNumericUpDown.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.moneyNumericUpDown.Name = "moneyNumericUpDown";
-            this.moneyNumericUpDown.Size = new System.Drawing.Size(120, 20);
-            this.moneyNumericUpDown.TabIndex = 5;
-            // 
             // experienceNumericUpDown
             // 
-            this.experienceNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.playerSource, "Experience", true));
+            this.experienceNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.playerSource, "Experience", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.experienceNumericUpDown.Location = new System.Drawing.Point(91, 56);
             this.experienceNumericUpDown.Maximum = new decimal(new int[] {
             -1000000,
@@ -423,13 +534,47 @@
             this.experienceNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.experienceNumericUpDown.TabIndex = 1;
             // 
+            // skillPointsNumericUpDown
+            // 
+            this.skillPointsNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.playerSource, "SkillPoints", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.skillPointsNumericUpDown.Location = new System.Drawing.Point(91, 82);
+            this.skillPointsNumericUpDown.Name = "skillPointsNumericUpDown";
+            this.skillPointsNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.skillPointsNumericUpDown.TabIndex = 13;
+            // 
+            // backpackSizeNumericUpDown
+            // 
+            this.backpackSizeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.playerSource, "BackpackSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.backpackSizeNumericUpDown.Location = new System.Drawing.Point(91, 161);
+            this.backpackSizeNumericUpDown.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.backpackSizeNumericUpDown.Name = "backpackSizeNumericUpDown";
+            this.backpackSizeNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.backpackSizeNumericUpDown.TabIndex = 11;
+            // 
+            // moneyNumericUpDown
+            // 
+            this.moneyNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.playerSource, "Money", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.moneyNumericUpDown.Location = new System.Drawing.Point(91, 108);
+            this.moneyNumericUpDown.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.moneyNumericUpDown.Name = "moneyNumericUpDown";
+            this.moneyNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.moneyNumericUpDown.TabIndex = 5;
+            // 
             // newuTab
             // 
             this.newuTab.Controls.Add(this.tableLayoutPanel2);
             this.newuTab.Location = new System.Drawing.Point(4, 22);
             this.newuTab.Name = "newuTab";
             this.newuTab.Padding = new System.Windows.Forms.Padding(3);
-            this.newuTab.Size = new System.Drawing.Size(592, 215);
+            this.newuTab.Size = new System.Drawing.Size(592, 275);
             this.newuTab.TabIndex = 5;
             this.newuTab.Text = "New-U";
             this.newuTab.UseVisualStyleBackColor = true;
@@ -441,11 +586,11 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.Controls.Add(color3Label, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this._Color3TextBox, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.color3TextBox, 1, 3);
             this.tableLayoutPanel2.Controls.Add(color2Label, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.color2TextBox, 1, 2);
             this.tableLayoutPanel2.Controls.Add(color1Label, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this._Color1TextBox, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.color1TextBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.nameTextBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(nameLabel, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -457,12 +602,36 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(586, 209);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(586, 269);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // color3TextBox
+            // 
+            this.color3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.playerSource, "_Color3", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.color3TextBox.Location = new System.Drawing.Point(52, 81);
+            this.color3TextBox.Name = "color3TextBox";
+            this.color3TextBox.Size = new System.Drawing.Size(100, 20);
+            this.color3TextBox.TabIndex = 11;
+            // 
+            // color2TextBox
+            // 
+            this.color2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.playerSource, "_Color2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.color2TextBox.Location = new System.Drawing.Point(52, 55);
+            this.color2TextBox.Name = "color2TextBox";
+            this.color2TextBox.Size = new System.Drawing.Size(100, 20);
+            this.color2TextBox.TabIndex = 10;
+            // 
+            // color1TextBox
+            // 
+            this.color1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.playerSource, "_Color1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.color1TextBox.Location = new System.Drawing.Point(52, 29);
+            this.color1TextBox.Name = "color1TextBox";
+            this.color1TextBox.Size = new System.Drawing.Size(100, 20);
+            this.color1TextBox.TabIndex = 9;
             // 
             // nameTextBox
             // 
-            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.playerSource, "Name", true));
+            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.playerSource, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nameTextBox.Location = new System.Drawing.Point(52, 3);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(100, 20);
@@ -475,7 +644,7 @@
             this.weaponsTab.Location = new System.Drawing.Point(4, 22);
             this.weaponsTab.Name = "weaponsTab";
             this.weaponsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.weaponsTab.Size = new System.Drawing.Size(592, 215);
+            this.weaponsTab.Size = new System.Drawing.Size(592, 275);
             this.weaponsTab.TabIndex = 1;
             this.weaponsTab.Text = "Weapons";
             this.weaponsTab.UseVisualStyleBackColor = true;
@@ -506,173 +675,8 @@
             this.weaponsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.weaponsDataGridView.Location = new System.Drawing.Point(3, 3);
             this.weaponsDataGridView.Name = "weaponsDataGridView";
-            this.weaponsDataGridView.Size = new System.Drawing.Size(586, 209);
+            this.weaponsDataGridView.Size = new System.Drawing.Size(586, 269);
             this.weaponsDataGridView.TabIndex = 0;
-            // 
-            // weaponsBindingSource
-            // 
-            this.weaponsBindingSource.AllowNew = true;
-            this.weaponsBindingSource.DataMember = "Weapons";
-            this.weaponsBindingSource.DataSource = this.playerSource;
-            // 
-            // itemsTab
-            // 
-            this.itemsTab.AutoScroll = true;
-            this.itemsTab.Controls.Add(this.itemsDataGridView);
-            this.itemsTab.Location = new System.Drawing.Point(4, 22);
-            this.itemsTab.Name = "itemsTab";
-            this.itemsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.itemsTab.Size = new System.Drawing.Size(592, 215);
-            this.itemsTab.TabIndex = 2;
-            this.itemsTab.Text = "Items";
-            this.itemsTab.UseVisualStyleBackColor = true;
-            // 
-            // itemsDataGridView
-            // 
-            this.itemsDataGridView.AutoGenerateColumns = false;
-            this.itemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn26,
-            this.dataGridViewTextBoxColumn27,
-            this.dataGridViewTextBoxColumn28,
-            this.dataGridViewTextBoxColumn29,
-            this.dataGridViewTextBoxColumn30,
-            this.dataGridViewTextBoxColumn31,
-            this.dataGridViewTextBoxColumn32});
-            this.itemsDataGridView.DataSource = this.itemsBindingSource;
-            this.itemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemsDataGridView.Location = new System.Drawing.Point(3, 3);
-            this.itemsDataGridView.Name = "itemsDataGridView";
-            this.itemsDataGridView.Size = new System.Drawing.Size(586, 209);
-            this.itemsDataGridView.TabIndex = 0;
-            // 
-            // itemsBindingSource
-            // 
-            this.itemsBindingSource.DataMember = "Items";
-            this.itemsBindingSource.DataSource = this.playerSource;
-            // 
-            // ammoPoolsTab
-            // 
-            this.ammoPoolsTab.AutoScroll = true;
-            this.ammoPoolsTab.Controls.Add(this.ammoPoolsDataGridView);
-            this.ammoPoolsTab.Location = new System.Drawing.Point(4, 22);
-            this.ammoPoolsTab.Name = "ammoPoolsTab";
-            this.ammoPoolsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ammoPoolsTab.Size = new System.Drawing.Size(592, 215);
-            this.ammoPoolsTab.TabIndex = 3;
-            this.ammoPoolsTab.Text = "Ammo Pools";
-            this.ammoPoolsTab.UseVisualStyleBackColor = true;
-            // 
-            // ammoPoolsDataGridView
-            // 
-            this.ammoPoolsDataGridView.AutoGenerateColumns = false;
-            this.ammoPoolsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ammoPoolsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn37,
-            this.dataGridViewTextBoxColumn38,
-            this.dataGridViewTextBoxColumn39,
-            this.dataGridViewTextBoxColumn40});
-            this.ammoPoolsDataGridView.DataSource = this.ammoPoolsBindingSource;
-            this.ammoPoolsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ammoPoolsDataGridView.Location = new System.Drawing.Point(3, 3);
-            this.ammoPoolsDataGridView.Name = "ammoPoolsDataGridView";
-            this.ammoPoolsDataGridView.Size = new System.Drawing.Size(586, 209);
-            this.ammoPoolsDataGridView.TabIndex = 0;
-            // 
-            // ammoPoolsBindingSource
-            // 
-            this.ammoPoolsBindingSource.DataMember = "AmmoPools";
-            this.ammoPoolsBindingSource.DataSource = this.playerSource;
-            // 
-            // skillsTab
-            // 
-            this.skillsTab.AutoScroll = true;
-            this.skillsTab.Controls.Add(this.skillsDataGridView);
-            this.skillsTab.Location = new System.Drawing.Point(4, 22);
-            this.skillsTab.Name = "skillsTab";
-            this.skillsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.skillsTab.Size = new System.Drawing.Size(592, 215);
-            this.skillsTab.TabIndex = 4;
-            this.skillsTab.Text = "Skills";
-            this.skillsTab.UseVisualStyleBackColor = true;
-            // 
-            // skillsBindingSource
-            // 
-            this.skillsBindingSource.DataMember = "Skills";
-            this.skillsBindingSource.DataSource = this.playerSource;
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.DefaultExt = "sav";
-            this.openFileDialog.Filter = "Borderlands Saves (*.sav)|*.sav|All Files (*.*)|*.*";
-            // 
-            // saveFileDialog
-            // 
-            this.saveFileDialog.Filter = "Borderlands Saves (*.sav)|*.sav|All Files (*.*)|*.*";
-            // 
-            // color1Label
-            // 
-            color1Label.AutoSize = true;
-            color1Label.Dock = System.Windows.Forms.DockStyle.Right;
-            color1Label.Location = new System.Drawing.Point(3, 26);
-            color1Label.Name = "color1Label";
-            color1Label.Size = new System.Drawing.Size(43, 26);
-            color1Label.TabIndex = 8;
-            color1Label.Text = "Color 1:";
-            color1Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // _Color1TextBox
-            // 
-            this._Color1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.playerSource, "_Color1", true));
-            this._Color1TextBox.Location = new System.Drawing.Point(52, 29);
-            this._Color1TextBox.Name = "_Color1TextBox";
-            this._Color1TextBox.Size = new System.Drawing.Size(100, 20);
-            this._Color1TextBox.TabIndex = 9;
-            // 
-            // color2Label
-            // 
-            color2Label.AutoSize = true;
-            color2Label.Dock = System.Windows.Forms.DockStyle.Right;
-            color2Label.Location = new System.Drawing.Point(3, 52);
-            color2Label.Name = "color2Label";
-            color2Label.Size = new System.Drawing.Size(43, 26);
-            color2Label.TabIndex = 9;
-            color2Label.Text = "Color 2:";
-            color2Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // color2TextBox
-            // 
-            this.color2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.playerSource, "_Color2", true));
-            this.color2TextBox.Location = new System.Drawing.Point(52, 55);
-            this.color2TextBox.Name = "color2TextBox";
-            this.color2TextBox.Size = new System.Drawing.Size(100, 20);
-            this.color2TextBox.TabIndex = 10;
-            // 
-            // color3Label
-            // 
-            color3Label.AutoSize = true;
-            color3Label.Dock = System.Windows.Forms.DockStyle.Right;
-            color3Label.Location = new System.Drawing.Point(3, 78);
-            color3Label.Name = "color3Label";
-            color3Label.Size = new System.Drawing.Size(43, 26);
-            color3Label.TabIndex = 10;
-            color3Label.Text = "Color 3:";
-            color3Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // _Color3TextBox
-            // 
-            this._Color3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.playerSource, "_Color3", true));
-            this._Color3TextBox.Location = new System.Drawing.Point(52, 81);
-            this._Color3TextBox.Name = "_Color3TextBox";
-            this._Color3TextBox.Size = new System.Drawing.Size(100, 20);
-            this._Color3TextBox.TabIndex = 11;
-            // 
-            // playerSource
-            // 
-            this.playerSource.DataSource = typeof(Gibbed.Borderlands.FileFormats.Player);
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -776,6 +780,46 @@
             this.dataGridViewTextBoxColumn21.HeaderText = "Equip Slot";
             this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
             // 
+            // weaponsBindingSource
+            // 
+            this.weaponsBindingSource.AllowNew = true;
+            this.weaponsBindingSource.DataMember = "Weapons";
+            this.weaponsBindingSource.DataSource = this.playerSource;
+            // 
+            // itemsTab
+            // 
+            this.itemsTab.AutoScroll = true;
+            this.itemsTab.Controls.Add(this.itemsDataGridView);
+            this.itemsTab.Location = new System.Drawing.Point(4, 22);
+            this.itemsTab.Name = "itemsTab";
+            this.itemsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.itemsTab.Size = new System.Drawing.Size(592, 275);
+            this.itemsTab.TabIndex = 2;
+            this.itemsTab.Text = "Items";
+            this.itemsTab.UseVisualStyleBackColor = true;
+            // 
+            // itemsDataGridView
+            // 
+            this.itemsDataGridView.AutoGenerateColumns = false;
+            this.itemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn23,
+            this.dataGridViewTextBoxColumn24,
+            this.dataGridViewTextBoxColumn25,
+            this.dataGridViewTextBoxColumn26,
+            this.dataGridViewTextBoxColumn27,
+            this.dataGridViewTextBoxColumn28,
+            this.dataGridViewTextBoxColumn29,
+            this.dataGridViewTextBoxColumn30,
+            this.dataGridViewTextBoxColumn31,
+            this.dataGridViewTextBoxColumn32});
+            this.itemsDataGridView.DataSource = this.itemsBindingSource;
+            this.itemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.itemsDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.itemsDataGridView.Name = "itemsDataGridView";
+            this.itemsDataGridView.Size = new System.Drawing.Size(586, 269);
+            this.itemsDataGridView.TabIndex = 0;
+            // 
             // dataGridViewTextBoxColumn23
             // 
             this.dataGridViewTextBoxColumn23.DataPropertyName = "Grade";
@@ -836,6 +880,39 @@
             this.dataGridViewTextBoxColumn32.HeaderText = "Unknown09";
             this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
             // 
+            // itemsBindingSource
+            // 
+            this.itemsBindingSource.DataMember = "Items";
+            this.itemsBindingSource.DataSource = this.playerSource;
+            // 
+            // ammoPoolsTab
+            // 
+            this.ammoPoolsTab.AutoScroll = true;
+            this.ammoPoolsTab.Controls.Add(this.ammoPoolsDataGridView);
+            this.ammoPoolsTab.Location = new System.Drawing.Point(4, 22);
+            this.ammoPoolsTab.Name = "ammoPoolsTab";
+            this.ammoPoolsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ammoPoolsTab.Size = new System.Drawing.Size(592, 275);
+            this.ammoPoolsTab.TabIndex = 3;
+            this.ammoPoolsTab.Text = "Ammo Pools";
+            this.ammoPoolsTab.UseVisualStyleBackColor = true;
+            // 
+            // ammoPoolsDataGridView
+            // 
+            this.ammoPoolsDataGridView.AutoGenerateColumns = false;
+            this.ammoPoolsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ammoPoolsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn37,
+            this.dataGridViewTextBoxColumn38,
+            this.dataGridViewTextBoxColumn39,
+            this.dataGridViewTextBoxColumn40});
+            this.ammoPoolsDataGridView.DataSource = this.ammoPoolsBindingSource;
+            this.ammoPoolsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ammoPoolsDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.ammoPoolsDataGridView.Name = "ammoPoolsDataGridView";
+            this.ammoPoolsDataGridView.Size = new System.Drawing.Size(586, 269);
+            this.ammoPoolsDataGridView.TabIndex = 0;
+            // 
             // dataGridViewTextBoxColumn37
             // 
             this.dataGridViewTextBoxColumn37.DataPropertyName = "Name";
@@ -860,6 +937,23 @@
             this.dataGridViewTextBoxColumn40.HeaderText = "Upgrade Level";
             this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
             // 
+            // ammoPoolsBindingSource
+            // 
+            this.ammoPoolsBindingSource.DataMember = "AmmoPools";
+            this.ammoPoolsBindingSource.DataSource = this.playerSource;
+            // 
+            // skillsTab
+            // 
+            this.skillsTab.AutoScroll = true;
+            this.skillsTab.Controls.Add(this.skillsDataGridView);
+            this.skillsTab.Location = new System.Drawing.Point(4, 22);
+            this.skillsTab.Name = "skillsTab";
+            this.skillsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.skillsTab.Size = new System.Drawing.Size(592, 275);
+            this.skillsTab.TabIndex = 4;
+            this.skillsTab.Text = "Skills";
+            this.skillsTab.UseVisualStyleBackColor = true;
+            // 
             // skillsDataGridView
             // 
             this.skillsDataGridView.AutoGenerateColumns = false;
@@ -873,7 +967,7 @@
             this.skillsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.skillsDataGridView.Location = new System.Drawing.Point(3, 3);
             this.skillsDataGridView.Name = "skillsDataGridView";
-            this.skillsDataGridView.Size = new System.Drawing.Size(586, 209);
+            this.skillsDataGridView.Size = new System.Drawing.Size(586, 269);
             this.skillsDataGridView.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
@@ -900,11 +994,25 @@
             this.dataGridViewTextBoxColumn42.HeaderText = "Artifact Mode";
             this.dataGridViewTextBoxColumn42.Name = "dataGridViewTextBoxColumn42";
             // 
+            // skillsBindingSource
+            // 
+            this.skillsBindingSource.DataMember = "Skills";
+            this.skillsBindingSource.DataSource = this.playerSource;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.DefaultExt = "sav";
+            this.openFileDialog.Filter = "Borderlands Saves (*.sav)|*.sav|All Files (*.*)|*.*";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "Borderlands Saves (*.sav)|*.sav|All Files (*.*)|*.*";
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 281);
+            this.ClientSize = new System.Drawing.Size(624, 341);
             this.Controls.Add(this.mainTabs);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Editor";
@@ -912,13 +1020,15 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.mainTabs.ResumeLayout(false);
-            this.characterTab.ResumeLayout(false);
+            this.playerTab.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.backpackSizeNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.moneyNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.experienceNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skillPointsNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backpackSizeNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moneyNumericUpDown)).EndInit();
             this.newuTab.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -932,9 +1042,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ammoPoolsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ammoPoolsBindingSource)).EndInit();
             this.skillsTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.skillsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skillsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skillsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -949,14 +1058,14 @@
         private System.Windows.Forms.ToolStripMenuItem newHunterMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.TabControl mainTabs;
-        private System.Windows.Forms.TabPage characterTab;
+        private System.Windows.Forms.TabPage playerTab;
         private System.Windows.Forms.TabPage weaponsTab;
         private System.Windows.Forms.BindingSource playerSource;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.NumericUpDown experienceNumericUpDown;
         private System.Windows.Forms.NumericUpDown levelNumericUpDown;
         private System.Windows.Forms.NumericUpDown moneyNumericUpDown;
-        private System.Windows.Forms.ComboBox classNameComboBox;
+        private System.Windows.Forms.ComboBox characterComboBox;
         private System.Windows.Forms.TabPage itemsTab;
         private System.Windows.Forms.ToolStripButton openButton;
         private System.Windows.Forms.ToolStripButton saveButton;
@@ -964,15 +1073,10 @@
         private System.Windows.Forms.NumericUpDown backpackSizeNumericUpDown;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.TabPage skillsTab;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.BindingSource skillsBindingSource;
         private System.Windows.Forms.BindingSource weaponsBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
         private System.Windows.Forms.BindingSource itemsBindingSource;
         private System.Windows.Forms.TabPage ammoPoolsTab;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.BindingSource ammoPoolsBindingSource;
         private System.Windows.Forms.DataGridView weaponsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
@@ -1003,8 +1107,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
         private System.Windows.Forms.TabPage newuTab;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.ColorDialog colorDialog1;
@@ -1014,14 +1116,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
-        private System.Windows.Forms.TextBox _Color1TextBox;
-        private System.Windows.Forms.TextBox _Color3TextBox;
+        private System.Windows.Forms.TextBox color1TextBox;
+        private System.Windows.Forms.TextBox color3TextBox;
         private System.Windows.Forms.TextBox color2TextBox;
         private System.Windows.Forms.DataGridView skillsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
+        private System.Windows.Forms.ComboBox currentStationComboBox;
+        private System.Windows.Forms.NumericUpDown skillPointsNumericUpDown;
     }
 }
 

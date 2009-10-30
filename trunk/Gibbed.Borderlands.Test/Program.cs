@@ -14,7 +14,7 @@ namespace Gibbed.Borderlands.Test
             path = Path.Combine(path, "My Games");
             path = Path.Combine(path, "Borderlands");
             path = Path.Combine(path, "SaveData");
-            path = Path.Combine(path, "Save0003.sav");
+            path = Path.Combine(path, "Save0001.first");
 
             Stream input = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             SaveFile save = new SaveFile();
