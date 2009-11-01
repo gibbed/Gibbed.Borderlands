@@ -60,6 +60,13 @@ namespace Gibbed.Borderlands.SaveEdit.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Duplicate {
+            get {
+                object obj = ResourceManager.GetObject("Duplicate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap New {
             get {
                 object obj = ResourceManager.GetObject("New", resourceCulture);

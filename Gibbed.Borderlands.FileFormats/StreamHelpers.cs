@@ -19,7 +19,7 @@ namespace Gibbed.Borderlands.FileFormats
 
         public static void WriteStringASCIIU32(this Stream stream, string value)
         {
-            if (value.Length == 0)
+            if (value == null || value.Length == 0)
             {
                 stream.WriteValueS32(0);
                 return;

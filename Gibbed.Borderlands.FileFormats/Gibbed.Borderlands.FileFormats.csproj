@@ -49,7 +49,15 @@
     <Compile Include="CharacterType.cs" />
     <Compile Include="SaveFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Save\AmmoPool.cs" />
+    <Compile Include="Save\Echo.cs" />
+    <Compile Include="Save\EchoPlaythrough.cs" />
+    <Compile Include="Save\Item.cs" />
+    <Compile Include="Save\Mission.cs" />
+    <Compile Include="Save\MissionPlaythrough.cs" />
+    <Compile Include="Save\Player.cs" />
+    <Compile Include="Save\Skill.cs" />
+    <Compile Include="Save\Weapon.cs" />
     <Compile Include="StreamHelpers.cs" />
   </ItemGroup>
   <ItemGroup>

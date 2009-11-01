@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultPlayer\Brick.cs" />
     <Compile Include="Editor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,7 +72,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Properties\DataSources\Gibbed.Borderlands.FileFormats.Player.datasource" />
+    <None Include="Properties\DataSources\Gibbed.Borderlands.FileFormats.Save.Player.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,7 +90,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Duplicate.png" />
+    <Content Include="Resources\New.png" />
+    <Content Include="Resources\Open.png" />
     <Content Include="Resources\Pink.ico" />
+    <Content Include="Resources\Save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

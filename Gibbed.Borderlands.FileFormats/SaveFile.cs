@@ -7,7 +7,7 @@ namespace Gibbed.Borderlands.FileFormats
     public class SaveFile
     {
         public int Version = 2;
-        public Player Player = new Player();
+        public Save.Player PlayerData = new Save.Player();
         
         public void Deserialize(Stream input)
         {
@@ -24,8 +24,8 @@ namespace Gibbed.Borderlands.FileFormats
 
             if (this.Version == 2)
             {
-                this.Player = new Player();
-                this.Player.Deserialize(input);
+                this.PlayerData = new Save.Player();
+                this.PlayerData.Deserialize(input);
             }
         }
 
@@ -33,7 +33,7 @@ namespace Gibbed.Borderlands.FileFormats
         {
             output.WriteStringASCII("WSG");
             output.WriteValueS32(this.Version);
-            this.Player.Serialize(output);
+            this.PlayerData.Serialize(output);
         }
     }
 }
