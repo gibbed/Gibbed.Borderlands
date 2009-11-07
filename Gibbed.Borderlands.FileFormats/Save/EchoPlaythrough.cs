@@ -11,7 +11,7 @@ namespace Gibbed.Borderlands.FileFormats.Save
         public UInt32 Playthrough;
         public List<Echo> Echoes = new List<Echo>();
 
-        public void Deserialize(Stream input)
+        public void Deserialize(SaveStream input)
         {
             this.Playthrough = input.ReadValueU32();
 
@@ -28,7 +28,7 @@ namespace Gibbed.Borderlands.FileFormats.Save
             }
         }
 
-        public void Serialize(Stream output)
+        public void Serialize(SaveStream output)
         {
             output.WriteValueU32(this.Playthrough);
 

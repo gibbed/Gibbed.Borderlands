@@ -67,6 +67,20 @@ namespace Gibbed.Borderlands.SaveEdit.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap ExportBrowser {
+            get {
+                object obj = ResourceManager.GetObject("ExportBrowser", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ExportClipboard {
+            get {
+                object obj = ResourceManager.GetObject("ExportClipboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap New {
             get {
                 object obj = ResourceManager.GetObject("New", resourceCulture);

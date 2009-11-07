@@ -13,18 +13,18 @@ namespace Gibbed.Borderlands.FileFormats.Save
         public float Quantity { get; set; }
         public Int32 UpgradeLevel { get; set; }
 
-        public void Deserialize(Stream input)
+        public void Deserialize(SaveStream input)
         {
-            this.Name = input.ReadStringASCIIU32();
-            this.Pool = input.ReadStringASCIIU32();
+            this.Name = input.ReadString();
+            this.Pool = input.ReadString();
             this.Quantity = input.ReadValueF32();
             this.UpgradeLevel = input.ReadValueS32();
         }
 
-        public void Serialize(Stream output)
+        public void Serialize(SaveStream output)
         {
-            output.WriteStringASCIIU32(this.Name);
-            output.WriteStringASCIIU32(this.Pool);
+            output.WriteString(this.Name);
+            output.WriteString(this.Pool);
             output.WriteValueF32(this.Quantity);
             output.WriteValueS32(this.UpgradeLevel);
         }

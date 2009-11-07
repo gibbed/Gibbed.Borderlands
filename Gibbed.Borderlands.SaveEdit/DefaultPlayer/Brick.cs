@@ -33,8 +33,8 @@ namespace Gibbed.Borderlands.SaveEdit.DefaultPlayer
             player.Character = "gd_Brick.Character.CharacterClass_Brick";
 
             // Backpack
-            player.BackpackCount = 2;
-            player.BackpackSize = 12;
+            player.WeaponSlots = 2;
+            player.BackpackSlots = 12;
 
             // Weapons
             player.Weapons.Add(

@@ -72,7 +72,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Properties\DataSources\Gibbed.Borderlands.FileFormats.Save.Player.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -90,7 +89,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\Gibbed.Borderlands.FileFormats.SaveFile.datasource" />
     <None Include="Resources\Duplicate.png" />
+    <None Include="Resources\ExportClipboard.png" />
+    <None Include="Resources\ExportBrowser.png" />
     <Content Include="Resources\New.png" />
     <Content Include="Resources\Open.png" />
     <Content Include="Resources\Pink.ico" />

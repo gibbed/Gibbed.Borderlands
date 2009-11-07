@@ -26,43 +26,43 @@ namespace Gibbed.Borderlands.FileFormats.Save
         public UInt32 Quality { get; set; }
         public UInt32 EquipSlot { get; set; }
 
-        public void Deserialize(Stream input)
+        public void Deserialize(SaveStream input)
         {
-            this.Grade = input.ReadStringASCIIU32();
-            this.Manufacturer = input.ReadStringASCIIU32();
-            this.Type = input.ReadStringASCIIU32();
-            this.Body = input.ReadStringASCIIU32();
-            this.Grip = input.ReadStringASCIIU32();
-            this.Magazine = input.ReadStringASCIIU32();
-            this.Barrel = input.ReadStringASCIIU32();
-            this.Sight = input.ReadStringASCIIU32();
-            this.Stock = input.ReadStringASCIIU32();
-            this.Action = input.ReadStringASCIIU32();
-            this.Accessory = input.ReadStringASCIIU32();
-            this.Material = input.ReadStringASCIIU32();
-            this.Prefix = input.ReadStringASCIIU32();
-            this.Title = input.ReadStringASCIIU32();
+            this.Grade = input.ReadString();
+            this.Manufacturer = input.ReadString();
+            this.Type = input.ReadString();
+            this.Body = input.ReadString();
+            this.Grip = input.ReadString();
+            this.Magazine = input.ReadString();
+            this.Barrel = input.ReadString();
+            this.Sight = input.ReadString();
+            this.Stock = input.ReadString();
+            this.Action = input.ReadString();
+            this.Accessory = input.ReadString();
+            this.Material = input.ReadString();
+            this.Prefix = input.ReadString();
+            this.Title = input.ReadString();
             this.ClipSize = input.ReadValueU32();
             this.Quality = input.ReadValueU32();
             this.EquipSlot = input.ReadValueU32();
         }
 
-        public void Serialize(Stream output)
+        public void Serialize(SaveStream output)
         {
-            output.WriteStringASCIIU32(this.Grade);
-            output.WriteStringASCIIU32(this.Manufacturer);
-            output.WriteStringASCIIU32(this.Type);
-            output.WriteStringASCIIU32(this.Body);
-            output.WriteStringASCIIU32(this.Grip);
-            output.WriteStringASCIIU32(this.Magazine);
-            output.WriteStringASCIIU32(this.Barrel);
-            output.WriteStringASCIIU32(this.Sight);
-            output.WriteStringASCIIU32(this.Stock);
-            output.WriteStringASCIIU32(this.Action);
-            output.WriteStringASCIIU32(this.Accessory);
-            output.WriteStringASCIIU32(this.Material);
-            output.WriteStringASCIIU32(this.Prefix);
-            output.WriteStringASCIIU32(this.Title);
+            output.WriteString(this.Grade);
+            output.WriteString(this.Manufacturer);
+            output.WriteString(this.Type);
+            output.WriteString(this.Body);
+            output.WriteString(this.Grip);
+            output.WriteString(this.Magazine);
+            output.WriteString(this.Barrel);
+            output.WriteString(this.Sight);
+            output.WriteString(this.Stock);
+            output.WriteString(this.Action);
+            output.WriteString(this.Accessory);
+            output.WriteString(this.Material);
+            output.WriteString(this.Prefix);
+            output.WriteString(this.Title);
             output.WriteValueU32(this.ClipSize);
             output.WriteValueU32(this.Quality);
             output.WriteValueU32(this.EquipSlot);

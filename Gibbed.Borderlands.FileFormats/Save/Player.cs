@@ -23,10 +23,10 @@ namespace Gibbed.Borderlands.FileFormats.Save
         public UInt32 Unknown10;
         public List<AmmoPool> AmmoPools { get; set; }
         public List<Item> Items { get; set; }
-        public UInt32 BackpackSize { get; set; }
-        public UInt32 BackpackCount;
+        public UInt32 BackpackSlots { get; set; }
+        public UInt32 WeaponSlots { get; set; }
         public List<Weapon> Weapons { get; set; }
-        public byte[] Unknown16 = new byte[0];
+        public byte[] Stats = new byte[0];
         public List<string> VisitedStations { get; set; }
         public string CurrentStation { get; set; }
         //public ??? Unknown19 = ...
@@ -100,9 +100,9 @@ namespace Gibbed.Borderlands.FileFormats.Save
             this.VisitedStations = new List<string>();
         }
 
-        public void Deserialize(Stream input)
+        public void Deserialize(SaveStream input)
         {
-            if (input.ReadStringASCII(4) != "PLYR")
+            if (input.ReadStaticString(4) != "PLYR")
             {
                 throw new FormatException("not player data");
             }
@@ -113,7 +113,7 @@ namespace Gibbed.Borderlands.FileFormats.Save
                 throw new FormatException("unsupported player data version (" + this.Version.ToString() + ")");
             }
 
-            this.Character = input.ReadStringASCIIU32();
+            this.Character = input.ReadString();
             this.Level = input.ReadValueU32();
             this.Experience = input.ReadValueU32();
             this.SkillPoints = input.ReadValueU32();
@@ -162,8 +162,8 @@ namespace Gibbed.Borderlands.FileFormats.Save
                 }
             }
 
-            this.BackpackSize = input.ReadValueU32();
-            this.BackpackCount = input.ReadValueU32();
+            this.BackpackSlots = input.ReadValueU32();
+            this.WeaponSlots = input.ReadValueU32();
 
             // Weapons
             {
@@ -177,12 +177,7 @@ namespace Gibbed.Borderlands.FileFormats.Save
                 }
             }
 
-            // Unknown16
-            {
-                int size = input.ReadValueS32();
-                this.Unknown16 = new byte[size];
-                input.Read(this.Unknown16, 0, size);
-            }
+            this.Stats = input.ReadBuffer();
 
             // Visited Zones
             {
@@ -190,11 +185,11 @@ namespace Gibbed.Borderlands.FileFormats.Save
                 this.VisitedStations.Clear();
                 for (uint i = 0; i < count; i++)
                 {
-                    this.VisitedStations.Add(input.ReadStringASCIIU32());
+                    this.VisitedStations.Add(input.ReadString());
                 }
             }
 
-            this.CurrentStation = input.ReadStringASCIIU32();
+            this.CurrentStation = input.ReadString();
 
             // Unknown19
             {
@@ -214,7 +209,7 @@ namespace Gibbed.Borderlands.FileFormats.Save
                 }
             }
 
-            this.Unknown21 = input.ReadStringASCIIU32(); ;
+            this.Unknown21 = input.ReadString(); ;
             this.Unknown22 = input.ReadValueU32();
             this.Unknown23 = input.ReadValueU32();
             this.SaveSlot = input.ReadValueU32();
@@ -228,13 +223,13 @@ namespace Gibbed.Borderlands.FileFormats.Save
             if (this.ExtraDataVersion >= 28 && this.ExtraDataVersion <= 31)
             {
                 // junk
-                input.ReadStringASCIIU32();
+                input.ReadString();
 
                 {
                     uint count = input.ReadValueU32();
                     for (uint i = 0; i < count; i++)
                     {
-                        input.ReadStringASCIIU32();
+                        input.ReadString();
                     }
                 }
             }
@@ -257,12 +252,12 @@ namespace Gibbed.Borderlands.FileFormats.Save
             if (this.ExtraDataVersion >= 30)
             {
                 this.PlayTime = input.ReadValueU32();
-                this.SaveTime = input.ReadStringASCIIU32();
+                this.SaveTime = input.ReadString();
             }
 
             if (this.ExtraDataVersion >= 31)
             {
-                this.Name = input.ReadStringASCIIU32();
+                this.Name = input.ReadString();
                 this.Color1 = input.ReadValueU32();
                 this.Color2 = input.ReadValueU32();
                 this.Color3 = input.ReadValueU32();
@@ -314,19 +309,15 @@ namespace Gibbed.Borderlands.FileFormats.Save
             if (this.ExtraDataVersion >= 35)
             {
                 // Unknown38
-                {
-                    int size = input.ReadValueS32();
-                    this.Unknown38 = new byte[size];
-                    input.Read(this.Unknown38, 0, size);
-                }
+                this.Unknown38 = input.ReadBuffer();
             }
         }
 
-        public void Serialize(Stream output)
+        public void Serialize(SaveStream output)
         {
-            output.WriteStringASCII("PLYR");
+            output.WriteStaticString("PLYR");
             output.WriteValueU32(this.Version);
-            output.WriteStringASCIIU32(this.Character);
+            output.WriteString(this.Character);
             output.WriteValueU32(this.Level);
             output.WriteValueU32(this.Experience);
             output.WriteValueU32(this.SkillPoints);
@@ -366,8 +357,8 @@ namespace Gibbed.Borderlands.FileFormats.Save
                 }
             }
 
-            output.WriteValueU32(this.BackpackSize);
-            output.WriteValueU32(this.BackpackCount);
+            output.WriteValueU32(this.BackpackSlots);
+            output.WriteValueU32(this.WeaponSlots);
 
             // Weapons
             {
@@ -380,8 +371,7 @@ namespace Gibbed.Borderlands.FileFormats.Save
 
             // Unknown16
             {
-                output.WriteValueS32(this.Unknown16.Length);
-                output.Write(this.Unknown16, 0, this.Unknown16.Length);
+                output.WriteBuffer(this.Stats);
             }
 
             // Visited Zones
@@ -389,11 +379,11 @@ namespace Gibbed.Borderlands.FileFormats.Save
                 output.WriteValueS32(this.VisitedStations.Count);
                 foreach (string visitedZone in this.VisitedStations)
                 {
-                    output.WriteStringASCIIU32(visitedZone);
+                    output.WriteString(visitedZone);
                 }
             }
 
-            output.WriteStringASCIIU32(this.CurrentStation);
+            output.WriteString(this.CurrentStation);
 
             // Unknown19
             {
@@ -407,7 +397,7 @@ namespace Gibbed.Borderlands.FileFormats.Save
                 output.WriteValueS32(0);
             }
 
-            output.WriteStringASCIIU32(this.Unknown21);
+            output.WriteString(this.Unknown21);
             output.WriteValueU32(this.Unknown22);
             output.WriteValueU32(this.Unknown23);
             output.WriteValueU32(this.SaveSlot);
@@ -421,7 +411,7 @@ namespace Gibbed.Borderlands.FileFormats.Save
             if (this.ExtraDataVersion >= 28 && this.ExtraDataVersion <= 31)
             {
                 // junk
-                output.WriteStringASCIIU32("");
+                output.WriteString("");
                 output.WriteValueU32(0);
             }
 
@@ -440,12 +430,12 @@ namespace Gibbed.Borderlands.FileFormats.Save
             if (this.ExtraDataVersion >= 30)
             {
                 output.WriteValueU32(this.PlayTime);
-                output.WriteStringASCIIU32(this.SaveTime);
+                output.WriteString(this.SaveTime);
             }
 
             if (this.ExtraDataVersion >= 31)
             {
-                output.WriteStringASCIIU32(this.Name);
+                output.WriteString(this.Name);
                 output.WriteValueU32(this.Color1);
                 output.WriteValueU32(this.Color2);
                 output.WriteValueU32(this.Color3);
@@ -491,11 +481,7 @@ namespace Gibbed.Borderlands.FileFormats.Save
 
             if (this.ExtraDataVersion >= 35)
             {
-                // Unknown38
-                {
-                    output.WriteValueS32(this.Unknown38.Length);
-                    output.Write(this.Unknown38, 0, this.Unknown38.Length);
-                }
+                output.WriteBuffer(this.Unknown38);
             }
         }
     }
