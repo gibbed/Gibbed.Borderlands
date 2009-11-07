@@ -12,10 +12,10 @@ namespace Gibbed.Borderlands.FileFormats.Save
         public string ActiveMission;
         public List<Mission> Missions = new List<Mission>();
 
-        public void Deserialize(Stream input)
+        public void Deserialize(SaveStream input)
         {
             this.Playthrough = input.ReadValueU32();
-            this.ActiveMission = input.ReadStringASCIIU32();
+            this.ActiveMission = input.ReadString();
 
             // Missions
             {
@@ -30,10 +30,10 @@ namespace Gibbed.Borderlands.FileFormats.Save
             }
         }
 
-        public void Serialize(Stream output)
+        public void Serialize(SaveStream output)
         {
             output.WriteValueU32(this.Playthrough);
-            output.WriteStringASCIIU32(this.ActiveMission);
+            output.WriteString(this.ActiveMission);
 
             // Missions
             {

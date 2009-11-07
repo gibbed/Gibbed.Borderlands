@@ -12,16 +12,16 @@ namespace Gibbed.Borderlands.FileFormats.Save
         public UInt32 Unknown1;
         public UInt32 Unknown2;
 
-        public void Deserialize(Stream input)
+        public void Deserialize(SaveStream input)
         {
-            this.Name = input.ReadStringASCIIU32();
+            this.Name = input.ReadString();
             this.Unknown1 = input.ReadValueU32();
             this.Unknown2 = input.ReadValueU32();
         }
 
-        public void Serialize(Stream output)
+        public void Serialize(SaveStream output)
         {
-            output.WriteStringASCIIU32(this.Name);
+            output.WriteString(this.Name);
             output.WriteValueU32(this.Unknown1);
             output.WriteValueU32(this.Unknown2);
         }

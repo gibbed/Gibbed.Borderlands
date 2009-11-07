@@ -21,33 +21,33 @@ namespace Gibbed.Borderlands.FileFormats.Save
         public UInt32 Quality { get; set; }
         public UInt32 Equipped { get; set; }
 
-        public void Deserialize(Stream input)
+        public void Deserialize(SaveStream input)
         {
-            this.Grade = input.ReadStringASCIIU32();
-            this.Type = input.ReadStringASCIIU32();
-            this.Body = input.ReadStringASCIIU32();
-            this.LeftSide = input.ReadStringASCIIU32();
-            this.RightSide = input.ReadStringASCIIU32();
-            this.Material = input.ReadStringASCIIU32();
-            this.Manufacturer = input.ReadStringASCIIU32();
-            this.Prefix = input.ReadStringASCIIU32();
-            this.Title = input.ReadStringASCIIU32();
+            this.Grade = input.ReadString();
+            this.Type = input.ReadString();
+            this.Body = input.ReadString();
+            this.LeftSide = input.ReadString();
+            this.RightSide = input.ReadString();
+            this.Material = input.ReadString();
+            this.Manufacturer = input.ReadString();
+            this.Prefix = input.ReadString();
+            this.Title = input.ReadString();
             this.Unknown09 = input.ReadValueU32();
             this.Quality = input.ReadValueU32();
             this.Equipped = input.ReadValueU32();
         }
 
-        public void Serialize(Stream output)
+        public void Serialize(SaveStream output)
         {
-            output.WriteStringASCIIU32(this.Grade);
-            output.WriteStringASCIIU32(this.Type);
-            output.WriteStringASCIIU32(this.Body);
-            output.WriteStringASCIIU32(this.LeftSide);
-            output.WriteStringASCIIU32(this.RightSide);
-            output.WriteStringASCIIU32(this.Material);
-            output.WriteStringASCIIU32(this.Manufacturer);
-            output.WriteStringASCIIU32(this.Prefix);
-            output.WriteStringASCIIU32(this.Title);
+            output.WriteString(this.Grade);
+            output.WriteString(this.Type);
+            output.WriteString(this.Body);
+            output.WriteString(this.LeftSide);
+            output.WriteString(this.RightSide);
+            output.WriteString(this.Material);
+            output.WriteString(this.Manufacturer);
+            output.WriteString(this.Prefix);
+            output.WriteString(this.Title);
             output.WriteValueU32(this.Unknown09);
             output.WriteValueU32(this.Quality);
             output.WriteValueU32(this.Equipped);
