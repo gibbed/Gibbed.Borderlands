@@ -146,7 +146,7 @@ namespace Gibbed.Borderlands.SaveEdit
                 url += GetSkillLevel("gd_Skills2_Roland.Medic.Grit");
                 url += GetSkillLevel("gd_Skills2_Roland.Medic.Stat");
             }
-            if (this.Save.PlayerData.Character == "gd_mordecai.Character.CharacterClass_Mordecai")
+            else if (this.Save.PlayerData.Character == "gd_mordecai.Character.CharacterClass_Mordecai")
             {
                 url += "mordecai/#1";
 
