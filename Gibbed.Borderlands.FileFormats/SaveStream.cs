@@ -34,13 +34,35 @@ namespace Gibbed.Borderlands.FileFormats
 
         public string ReadString()
         {
-            UInt32 length = this.ReadValueU32();
+            Int32 length = this.ReadValueS32();
+
+            if (length == 0)
+            {
+                return "";
+            }
+
+            bool isUnicode = false;
+            
+            // stupid stupid stupid stupid stupid
+            if (length < 0)
+            {
+                length = Math.Abs(length);
+                isUnicode = true;
+            }
+            
             if (length >= 1024 * 1024)
             {
                 throw new InvalidOperationException("somehow I doubt there is a >1MB string to be read");
             }
 
-            return this.Stream.ReadStringASCII(length, true);
+            if (isUnicode == true)
+            {
+                return this.Stream.ReadStringUTF16((uint)(length * 2), true);
+            }
+            else
+            {
+                return this.Stream.ReadStringASCII((uint)(length), true);
+            }
         }
 
         public string ReadStaticString(UInt32 length)
@@ -79,9 +101,13 @@ namespace Gibbed.Borderlands.FileFormats
                 return;
             }
 
-            this.WriteValueS32(value.Length + 1);
-            this.Stream.WriteStringASCII(value);
-            this.Stream.WriteValueU8(0);
+            // I'm lazy, always write in UTF16 so I don't have to bother
+            // checking if a string contains special characters that can't
+            // be stored in ASCII.
+
+            this.WriteValueS32(-(value.Length + 1));
+            this.Stream.WriteStringUTF16(value);
+            this.Stream.WriteValueU16(0);
         }
 
         public void WriteStaticString(string value)
