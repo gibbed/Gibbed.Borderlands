@@ -32,6 +32,11 @@ namespace Gibbed.Borderlands.FileFormats
             return this.Stream.ReadValueF32(this.LittleEndian);
         }
 
+        public T ReadEnum<T>()
+        {
+            return this.Stream.ReadValueEnum<T>();
+        }
+
         public string ReadString()
         {
             Int32 length = this.ReadValueS32();
@@ -57,7 +62,7 @@ namespace Gibbed.Borderlands.FileFormats
 
             if (isUnicode == true)
             {
-                return this.Stream.ReadStringUTF16((uint)(length * 2), true);
+                return this.Stream.ReadStringUTF16(this.LittleEndian, (uint)(length * 2), true);
             }
             else
             {
@@ -93,6 +98,11 @@ namespace Gibbed.Borderlands.FileFormats
             this.Stream.WriteValueF32(value, this.LittleEndian);
         }
 
+        public void WriteEnum<T>(T value)
+        {
+            this.Stream.WriteValueEnum<T>(value);
+        }
+
         public void WriteString(string value)
         {
             if (value == null || value.Length == 0)
@@ -106,7 +116,7 @@ namespace Gibbed.Borderlands.FileFormats
             // be stored in ASCII.
 
             this.WriteValueS32(-(value.Length + 1));
-            this.Stream.WriteStringUTF16(value);
+            this.Stream.WriteStringUTF16(this.LittleEndian, value);
             this.Stream.WriteValueU16(0);
         }
 
