@@ -73,49 +73,6 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.weaponsTab = new System.Windows.Forms.TabPage();
             this.weaponsPanel = new System.Windows.Forms.Panel();
-            this.weaponsSource = new System.Windows.Forms.BindingSource(this.components);
-            this.weaponsToolStrip = new System.Windows.Forms.ToolStrip();
-            this.weaponDuplicateButton = new System.Windows.Forms.ToolStripButton();
-            this.itemsTab = new System.Windows.Forms.TabPage();
-            this.itemsPanel = new System.Windows.Forms.Panel();
-            this.itemsSource = new System.Windows.Forms.BindingSource(this.components);
-            this.itemsToolStrip = new System.Windows.Forms.ToolStrip();
-            this.itemDuplicateButton = new System.Windows.Forms.ToolStripButton();
-            this.ammoPoolsTab = new System.Windows.Forms.TabPage();
-            this.ammoPoolsSource = new System.Windows.Forms.BindingSource(this.components);
-            this.skillsTab = new System.Windows.Forms.TabPage();
-            this.skillsPanel = new System.Windows.Forms.Panel();
-            this.skillsSource = new System.Windows.Forms.BindingSource(this.components);
-            this.skillsToolStrip = new System.Windows.Forms.ToolStrip();
-            this.exportSkillTreeClipboardButton = new System.Windows.Forms.ToolStripButton();
-            this.exportSkillTreeBrowserButton = new System.Windows.Forms.ToolStripButton();
-            this.saveTab = new System.Windows.Forms.TabPage();
-            this.littleEndianCheckBox = new System.Windows.Forms.CheckBox();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.ammoPoolsDataGrid = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.skillsDataGrid = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemsDataGrid = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weaponsDataGrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -134,6 +91,49 @@
             this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weaponsSource = new System.Windows.Forms.BindingSource(this.components);
+            this.weaponsToolStrip = new System.Windows.Forms.ToolStrip();
+            this.weaponDuplicateButton = new System.Windows.Forms.ToolStripButton();
+            this.itemsTab = new System.Windows.Forms.TabPage();
+            this.itemsPanel = new System.Windows.Forms.Panel();
+            this.itemsDataGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemsSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemsToolStrip = new System.Windows.Forms.ToolStrip();
+            this.itemDuplicateButton = new System.Windows.Forms.ToolStripButton();
+            this.ammoPoolsTab = new System.Windows.Forms.TabPage();
+            this.ammoPoolsDataGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ammoPoolsSource = new System.Windows.Forms.BindingSource(this.components);
+            this.skillsTab = new System.Windows.Forms.TabPage();
+            this.skillsPanel = new System.Windows.Forms.Panel();
+            this.skillsDataGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.skillsSource = new System.Windows.Forms.BindingSource(this.components);
+            this.skillsToolStrip = new System.Windows.Forms.ToolStrip();
+            this.exportSkillTreeClipboardButton = new System.Windows.Forms.ToolStripButton();
+            this.exportSkillTreeBrowserButton = new System.Windows.Forms.ToolStripButton();
+            this.saveTab = new System.Windows.Forms.TabPage();
+            this.littleEndianCheckBox = new System.Windows.Forms.CheckBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             experienceLabel = new System.Windows.Forms.Label();
             levelLabel = new System.Windows.Forms.Label();
             moneyLabel = new System.Windows.Forms.Label();
@@ -164,23 +164,23 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.weaponsTab.SuspendLayout();
             this.weaponsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weaponsSource)).BeginInit();
             this.weaponsToolStrip.SuspendLayout();
             this.itemsTab.SuspendLayout();
             this.itemsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsSource)).BeginInit();
             this.itemsToolStrip.SuspendLayout();
             this.ammoPoolsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ammoPoolsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ammoPoolsSource)).BeginInit();
             this.skillsTab.SuspendLayout();
             this.skillsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.skillsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skillsSource)).BeginInit();
             this.skillsToolStrip.SuspendLayout();
             this.saveTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ammoPoolsDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.skillsDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // experienceLabel
@@ -402,9 +402,9 @@
             // 
             // mainTabs
             // 
-            this.mainTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mainTabs.Controls.Add(this.playerTab);
             this.mainTabs.Controls.Add(this.newuTab);
             this.mainTabs.Controls.Add(this.weaponsTab);
@@ -757,362 +757,6 @@
             this.weaponsPanel.Size = new System.Drawing.Size(586, 244);
             this.weaponsPanel.TabIndex = 3;
             // 
-            // weaponsSource
-            // 
-            this.weaponsSource.AllowNew = true;
-            this.weaponsSource.DataMember = "Weapons";
-            this.weaponsSource.DataSource = this.playerSource;
-            // 
-            // weaponsToolStrip
-            // 
-            this.weaponsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.weaponDuplicateButton});
-            this.weaponsToolStrip.Location = new System.Drawing.Point(3, 3);
-            this.weaponsToolStrip.Name = "weaponsToolStrip";
-            this.weaponsToolStrip.Size = new System.Drawing.Size(586, 25);
-            this.weaponsToolStrip.TabIndex = 2;
-            this.weaponsToolStrip.Text = "toolStrip2";
-            // 
-            // weaponDuplicateButton
-            // 
-            this.weaponDuplicateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.weaponDuplicateButton.Image = global::Gibbed.Borderlands.SaveEdit.Properties.Resources.Duplicate;
-            this.weaponDuplicateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.weaponDuplicateButton.Name = "weaponDuplicateButton";
-            this.weaponDuplicateButton.Size = new System.Drawing.Size(23, 22);
-            this.weaponDuplicateButton.Text = "Duplicate Selected Weapons";
-            this.weaponDuplicateButton.Click += new System.EventHandler(this.OnWeaponDuplicate);
-            // 
-            // itemsTab
-            // 
-            this.itemsTab.AutoScroll = true;
-            this.itemsTab.Controls.Add(this.itemsPanel);
-            this.itemsTab.Controls.Add(this.itemsToolStrip);
-            this.itemsTab.Location = new System.Drawing.Point(4, 22);
-            this.itemsTab.Name = "itemsTab";
-            this.itemsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.itemsTab.Size = new System.Drawing.Size(592, 275);
-            this.itemsTab.TabIndex = 2;
-            this.itemsTab.Text = "Items";
-            this.itemsTab.UseVisualStyleBackColor = true;
-            // 
-            // itemsPanel
-            // 
-            this.itemsPanel.AutoScroll = true;
-            this.itemsPanel.Controls.Add(this.itemsDataGrid);
-            this.itemsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemsPanel.Location = new System.Drawing.Point(3, 28);
-            this.itemsPanel.Name = "itemsPanel";
-            this.itemsPanel.Size = new System.Drawing.Size(586, 244);
-            this.itemsPanel.TabIndex = 2;
-            // 
-            // itemsSource
-            // 
-            this.itemsSource.DataMember = "Items";
-            this.itemsSource.DataSource = this.playerSource;
-            // 
-            // itemsToolStrip
-            // 
-            this.itemsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemDuplicateButton});
-            this.itemsToolStrip.Location = new System.Drawing.Point(3, 3);
-            this.itemsToolStrip.Name = "itemsToolStrip";
-            this.itemsToolStrip.Size = new System.Drawing.Size(586, 25);
-            this.itemsToolStrip.TabIndex = 1;
-            this.itemsToolStrip.Text = "toolStrip2";
-            // 
-            // itemDuplicateButton
-            // 
-            this.itemDuplicateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.itemDuplicateButton.Image = global::Gibbed.Borderlands.SaveEdit.Properties.Resources.Duplicate;
-            this.itemDuplicateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.itemDuplicateButton.Name = "itemDuplicateButton";
-            this.itemDuplicateButton.Size = new System.Drawing.Size(23, 22);
-            this.itemDuplicateButton.Text = "Duplicate Selected Items";
-            this.itemDuplicateButton.Click += new System.EventHandler(this.OnItemDuplicate);
-            // 
-            // ammoPoolsTab
-            // 
-            this.ammoPoolsTab.AutoScroll = true;
-            this.ammoPoolsTab.Controls.Add(this.ammoPoolsDataGrid);
-            this.ammoPoolsTab.Location = new System.Drawing.Point(4, 22);
-            this.ammoPoolsTab.Name = "ammoPoolsTab";
-            this.ammoPoolsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ammoPoolsTab.Size = new System.Drawing.Size(592, 275);
-            this.ammoPoolsTab.TabIndex = 3;
-            this.ammoPoolsTab.Text = "Ammo Pools";
-            this.ammoPoolsTab.UseVisualStyleBackColor = true;
-            // 
-            // ammoPoolsSource
-            // 
-            this.ammoPoolsSource.DataMember = "AmmoPools";
-            this.ammoPoolsSource.DataSource = this.playerSource;
-            // 
-            // skillsTab
-            // 
-            this.skillsTab.AutoScroll = true;
-            this.skillsTab.Controls.Add(this.skillsPanel);
-            this.skillsTab.Controls.Add(this.skillsToolStrip);
-            this.skillsTab.Location = new System.Drawing.Point(4, 22);
-            this.skillsTab.Name = "skillsTab";
-            this.skillsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.skillsTab.Size = new System.Drawing.Size(592, 275);
-            this.skillsTab.TabIndex = 4;
-            this.skillsTab.Text = "Skills";
-            this.skillsTab.UseVisualStyleBackColor = true;
-            // 
-            // skillsPanel
-            // 
-            this.skillsPanel.AutoScroll = true;
-            this.skillsPanel.Controls.Add(this.skillsDataGrid);
-            this.skillsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.skillsPanel.Location = new System.Drawing.Point(3, 28);
-            this.skillsPanel.Name = "skillsPanel";
-            this.skillsPanel.Size = new System.Drawing.Size(586, 244);
-            this.skillsPanel.TabIndex = 1;
-            // 
-            // skillsSource
-            // 
-            this.skillsSource.DataMember = "Skills";
-            this.skillsSource.DataSource = this.playerSource;
-            // 
-            // skillsToolStrip
-            // 
-            this.skillsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportSkillTreeClipboardButton,
-            this.exportSkillTreeBrowserButton});
-            this.skillsToolStrip.Location = new System.Drawing.Point(3, 3);
-            this.skillsToolStrip.Name = "skillsToolStrip";
-            this.skillsToolStrip.Size = new System.Drawing.Size(586, 25);
-            this.skillsToolStrip.TabIndex = 0;
-            // 
-            // exportSkillTreeClipboardButton
-            // 
-            this.exportSkillTreeClipboardButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.exportSkillTreeClipboardButton.Image = global::Gibbed.Borderlands.SaveEdit.Properties.Resources.ExportClipboard;
-            this.exportSkillTreeClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.exportSkillTreeClipboardButton.Name = "exportSkillTreeClipboardButton";
-            this.exportSkillTreeClipboardButton.Size = new System.Drawing.Size(23, 22);
-            this.exportSkillTreeClipboardButton.Text = "Export Skill Tree URL to clipboard";
-            this.exportSkillTreeClipboardButton.Click += new System.EventHandler(this.OnSkillExportClipboard);
-            // 
-            // exportSkillTreeBrowserButton
-            // 
-            this.exportSkillTreeBrowserButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.exportSkillTreeBrowserButton.Image = global::Gibbed.Borderlands.SaveEdit.Properties.Resources.ExportBrowser;
-            this.exportSkillTreeBrowserButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.exportSkillTreeBrowserButton.Name = "exportSkillTreeBrowserButton";
-            this.exportSkillTreeBrowserButton.Size = new System.Drawing.Size(23, 22);
-            this.exportSkillTreeBrowserButton.Text = "Export Skill Tree URL to browser";
-            this.exportSkillTreeBrowserButton.Click += new System.EventHandler(this.OnSkillExportBrowser);
-            // 
-            // saveTab
-            // 
-            this.saveTab.Controls.Add(this.littleEndianCheckBox);
-            this.saveTab.Location = new System.Drawing.Point(4, 22);
-            this.saveTab.Name = "saveTab";
-            this.saveTab.Padding = new System.Windows.Forms.Padding(3);
-            this.saveTab.Size = new System.Drawing.Size(592, 275);
-            this.saveTab.TabIndex = 6;
-            this.saveTab.Text = "Save";
-            this.saveTab.UseVisualStyleBackColor = true;
-            // 
-            // littleEndianCheckBox
-            // 
-            this.littleEndianCheckBox.AutoSize = true;
-            this.littleEndianCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.saveFileSource, "LittleEndian", true));
-            this.littleEndianCheckBox.Location = new System.Drawing.Point(6, 6);
-            this.littleEndianCheckBox.Name = "littleEndianCheckBox";
-            this.littleEndianCheckBox.Size = new System.Drawing.Size(261, 17);
-            this.littleEndianCheckBox.TabIndex = 1;
-            this.littleEndianCheckBox.Text = "Little Endian  (Check if Windows, uncheck if PS3)";
-            this.littleEndianCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.DefaultExt = "sav";
-            this.openFileDialog.Filter = "Borderlands Saves (*.sav)|*.sav|All Files (*.*)|*.*";
-            // 
-            // saveFileDialog
-            // 
-            this.saveFileDialog.Filter = "Borderlands Saves (*.sav)|*.sav|All Files (*.*)|*.*";
-            // 
-            // ammoPoolsDataGrid
-            // 
-            this.ammoPoolsDataGrid.AutoGenerateColumns = false;
-            this.ammoPoolsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ammoPoolsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.ammoPoolsDataGrid.DataSource = this.ammoPoolsSource;
-            this.ammoPoolsDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ammoPoolsDataGrid.Location = new System.Drawing.Point(3, 3);
-            this.ammoPoolsDataGrid.Name = "ammoPoolsDataGrid";
-            this.ammoPoolsDataGrid.Size = new System.Drawing.Size(586, 269);
-            this.ammoPoolsDataGrid.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Pool";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Pool";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Quantity";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Quantity";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "UpgradeLevel";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Upgrade Level";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // skillsDataGrid
-            // 
-            this.skillsDataGrid.AutoGenerateColumns = false;
-            this.skillsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.skillsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8});
-            this.skillsDataGrid.DataSource = this.skillsSource;
-            this.skillsDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.skillsDataGrid.Location = new System.Drawing.Point(0, 0);
-            this.skillsDataGrid.Name = "skillsDataGrid";
-            this.skillsDataGrid.Size = new System.Drawing.Size(586, 244);
-            this.skillsDataGrid.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Level";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Level";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Experience";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Experience";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "ArtifactMode";
-            this.dataGridViewTextBoxColumn8.HeaderText = "ArtifactMode";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // itemsDataGrid
-            // 
-            this.itemsDataGrid.AutoGenerateColumns = false;
-            this.itemsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn18});
-            this.itemsDataGrid.DataSource = this.itemsSource;
-            this.itemsDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemsDataGrid.Location = new System.Drawing.Point(0, 0);
-            this.itemsDataGrid.Name = "itemsDataGrid";
-            this.itemsDataGrid.Size = new System.Drawing.Size(586, 244);
-            this.itemsDataGrid.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "Equipped";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Equipped";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "Type";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Type";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Grade";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Grade";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "Quality";
-            this.dataGridViewTextBoxColumn19.HeaderText = "Quality";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "Prefix";
-            this.dataGridViewTextBoxColumn16.HeaderText = "Prefix";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "Title";
-            this.dataGridViewTextBoxColumn17.HeaderText = "Title";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "Body";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Body";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "LeftSide";
-            this.dataGridViewTextBoxColumn12.HeaderText = "Left Side";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "RightSide";
-            this.dataGridViewTextBoxColumn13.HeaderText = "Right Side";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "Material";
-            this.dataGridViewTextBoxColumn14.HeaderText = "Material";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "Manufacturer";
-            this.dataGridViewTextBoxColumn15.HeaderText = "Manufacturer";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "Unknown09";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Unknown09";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            // 
             // weaponsDataGrid
             // 
             this.weaponsDataGrid.AutoGenerateColumns = false;
@@ -1244,6 +888,362 @@
             this.dataGridViewTextBoxColumn35.HeaderText = "Clip Size?";
             this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
             // 
+            // weaponsSource
+            // 
+            this.weaponsSource.AllowNew = true;
+            this.weaponsSource.DataMember = "Weapons";
+            this.weaponsSource.DataSource = this.playerSource;
+            // 
+            // weaponsToolStrip
+            // 
+            this.weaponsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.weaponDuplicateButton});
+            this.weaponsToolStrip.Location = new System.Drawing.Point(3, 3);
+            this.weaponsToolStrip.Name = "weaponsToolStrip";
+            this.weaponsToolStrip.Size = new System.Drawing.Size(586, 25);
+            this.weaponsToolStrip.TabIndex = 2;
+            this.weaponsToolStrip.Text = "toolStrip2";
+            // 
+            // weaponDuplicateButton
+            // 
+            this.weaponDuplicateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.weaponDuplicateButton.Image = global::Gibbed.Borderlands.SaveEdit.Properties.Resources.Duplicate;
+            this.weaponDuplicateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.weaponDuplicateButton.Name = "weaponDuplicateButton";
+            this.weaponDuplicateButton.Size = new System.Drawing.Size(23, 22);
+            this.weaponDuplicateButton.Text = "Duplicate Selected Weapons";
+            this.weaponDuplicateButton.Click += new System.EventHandler(this.OnWeaponDuplicate);
+            // 
+            // itemsTab
+            // 
+            this.itemsTab.AutoScroll = true;
+            this.itemsTab.Controls.Add(this.itemsPanel);
+            this.itemsTab.Controls.Add(this.itemsToolStrip);
+            this.itemsTab.Location = new System.Drawing.Point(4, 22);
+            this.itemsTab.Name = "itemsTab";
+            this.itemsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.itemsTab.Size = new System.Drawing.Size(592, 275);
+            this.itemsTab.TabIndex = 2;
+            this.itemsTab.Text = "Items";
+            this.itemsTab.UseVisualStyleBackColor = true;
+            // 
+            // itemsPanel
+            // 
+            this.itemsPanel.AutoScroll = true;
+            this.itemsPanel.Controls.Add(this.itemsDataGrid);
+            this.itemsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.itemsPanel.Location = new System.Drawing.Point(3, 28);
+            this.itemsPanel.Name = "itemsPanel";
+            this.itemsPanel.Size = new System.Drawing.Size(586, 244);
+            this.itemsPanel.TabIndex = 2;
+            // 
+            // itemsDataGrid
+            // 
+            this.itemsDataGrid.AutoGenerateColumns = false;
+            this.itemsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn18});
+            this.itemsDataGrid.DataSource = this.itemsSource;
+            this.itemsDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.itemsDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.itemsDataGrid.Name = "itemsDataGrid";
+            this.itemsDataGrid.Size = new System.Drawing.Size(586, 244);
+            this.itemsDataGrid.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "Equipped";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Equipped";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Type";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Type";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Grade";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Grade";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "Quality";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Quality";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "Prefix";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Prefix";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "Title";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Title";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "Body";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Body";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "LeftSide";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Left Side";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "RightSide";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Right Side";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "Material";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Material";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "Manufacturer";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Manufacturer";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "Unknown09";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Unknown09";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            // 
+            // itemsSource
+            // 
+            this.itemsSource.DataMember = "Items";
+            this.itemsSource.DataSource = this.playerSource;
+            // 
+            // itemsToolStrip
+            // 
+            this.itemsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemDuplicateButton});
+            this.itemsToolStrip.Location = new System.Drawing.Point(3, 3);
+            this.itemsToolStrip.Name = "itemsToolStrip";
+            this.itemsToolStrip.Size = new System.Drawing.Size(586, 25);
+            this.itemsToolStrip.TabIndex = 1;
+            this.itemsToolStrip.Text = "toolStrip2";
+            // 
+            // itemDuplicateButton
+            // 
+            this.itemDuplicateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.itemDuplicateButton.Image = global::Gibbed.Borderlands.SaveEdit.Properties.Resources.Duplicate;
+            this.itemDuplicateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.itemDuplicateButton.Name = "itemDuplicateButton";
+            this.itemDuplicateButton.Size = new System.Drawing.Size(23, 22);
+            this.itemDuplicateButton.Text = "Duplicate Selected Items";
+            this.itemDuplicateButton.Click += new System.EventHandler(this.OnItemDuplicate);
+            // 
+            // ammoPoolsTab
+            // 
+            this.ammoPoolsTab.AutoScroll = true;
+            this.ammoPoolsTab.Controls.Add(this.ammoPoolsDataGrid);
+            this.ammoPoolsTab.Location = new System.Drawing.Point(4, 22);
+            this.ammoPoolsTab.Name = "ammoPoolsTab";
+            this.ammoPoolsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ammoPoolsTab.Size = new System.Drawing.Size(592, 275);
+            this.ammoPoolsTab.TabIndex = 3;
+            this.ammoPoolsTab.Text = "Ammo Pools";
+            this.ammoPoolsTab.UseVisualStyleBackColor = true;
+            // 
+            // ammoPoolsDataGrid
+            // 
+            this.ammoPoolsDataGrid.AutoGenerateColumns = false;
+            this.ammoPoolsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ammoPoolsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.ammoPoolsDataGrid.DataSource = this.ammoPoolsSource;
+            this.ammoPoolsDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ammoPoolsDataGrid.Location = new System.Drawing.Point(3, 3);
+            this.ammoPoolsDataGrid.Name = "ammoPoolsDataGrid";
+            this.ammoPoolsDataGrid.Size = new System.Drawing.Size(586, 269);
+            this.ammoPoolsDataGrid.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Pool";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Pool";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Quantity";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Quantity";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "UpgradeLevel";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Upgrade Level";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // ammoPoolsSource
+            // 
+            this.ammoPoolsSource.DataMember = "AmmoPools";
+            this.ammoPoolsSource.DataSource = this.playerSource;
+            // 
+            // skillsTab
+            // 
+            this.skillsTab.AutoScroll = true;
+            this.skillsTab.Controls.Add(this.skillsPanel);
+            this.skillsTab.Controls.Add(this.skillsToolStrip);
+            this.skillsTab.Location = new System.Drawing.Point(4, 22);
+            this.skillsTab.Name = "skillsTab";
+            this.skillsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.skillsTab.Size = new System.Drawing.Size(592, 275);
+            this.skillsTab.TabIndex = 4;
+            this.skillsTab.Text = "Skills";
+            this.skillsTab.UseVisualStyleBackColor = true;
+            // 
+            // skillsPanel
+            // 
+            this.skillsPanel.AutoScroll = true;
+            this.skillsPanel.Controls.Add(this.skillsDataGrid);
+            this.skillsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.skillsPanel.Location = new System.Drawing.Point(3, 28);
+            this.skillsPanel.Name = "skillsPanel";
+            this.skillsPanel.Size = new System.Drawing.Size(586, 244);
+            this.skillsPanel.TabIndex = 1;
+            // 
+            // skillsDataGrid
+            // 
+            this.skillsDataGrid.AutoGenerateColumns = false;
+            this.skillsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.skillsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.skillsDataGrid.DataSource = this.skillsSource;
+            this.skillsDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.skillsDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.skillsDataGrid.Name = "skillsDataGrid";
+            this.skillsDataGrid.Size = new System.Drawing.Size(586, 244);
+            this.skillsDataGrid.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Level";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Level";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Experience";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Experience";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "ArtifactMode";
+            this.dataGridViewTextBoxColumn8.HeaderText = "ArtifactMode";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // skillsSource
+            // 
+            this.skillsSource.DataMember = "Skills";
+            this.skillsSource.DataSource = this.playerSource;
+            // 
+            // skillsToolStrip
+            // 
+            this.skillsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportSkillTreeClipboardButton,
+            this.exportSkillTreeBrowserButton});
+            this.skillsToolStrip.Location = new System.Drawing.Point(3, 3);
+            this.skillsToolStrip.Name = "skillsToolStrip";
+            this.skillsToolStrip.Size = new System.Drawing.Size(586, 25);
+            this.skillsToolStrip.TabIndex = 0;
+            // 
+            // exportSkillTreeClipboardButton
+            // 
+            this.exportSkillTreeClipboardButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.exportSkillTreeClipboardButton.Image = global::Gibbed.Borderlands.SaveEdit.Properties.Resources.ExportClipboard;
+            this.exportSkillTreeClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportSkillTreeClipboardButton.Name = "exportSkillTreeClipboardButton";
+            this.exportSkillTreeClipboardButton.Size = new System.Drawing.Size(23, 22);
+            this.exportSkillTreeClipboardButton.Text = "Export Skill Tree URL to clipboard";
+            this.exportSkillTreeClipboardButton.Click += new System.EventHandler(this.OnSkillExportClipboard);
+            // 
+            // exportSkillTreeBrowserButton
+            // 
+            this.exportSkillTreeBrowserButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.exportSkillTreeBrowserButton.Image = global::Gibbed.Borderlands.SaveEdit.Properties.Resources.ExportBrowser;
+            this.exportSkillTreeBrowserButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportSkillTreeBrowserButton.Name = "exportSkillTreeBrowserButton";
+            this.exportSkillTreeBrowserButton.Size = new System.Drawing.Size(23, 22);
+            this.exportSkillTreeBrowserButton.Text = "Export Skill Tree URL to browser";
+            this.exportSkillTreeBrowserButton.Click += new System.EventHandler(this.OnSkillExportBrowser);
+            // 
+            // saveTab
+            // 
+            this.saveTab.Controls.Add(this.littleEndianCheckBox);
+            this.saveTab.Location = new System.Drawing.Point(4, 22);
+            this.saveTab.Name = "saveTab";
+            this.saveTab.Padding = new System.Windows.Forms.Padding(3);
+            this.saveTab.Size = new System.Drawing.Size(592, 275);
+            this.saveTab.TabIndex = 6;
+            this.saveTab.Text = "Save";
+            this.saveTab.UseVisualStyleBackColor = true;
+            // 
+            // littleEndianCheckBox
+            // 
+            this.littleEndianCheckBox.AutoSize = true;
+            this.littleEndianCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.saveFileSource, "LittleEndian", true));
+            this.littleEndianCheckBox.Location = new System.Drawing.Point(6, 6);
+            this.littleEndianCheckBox.Name = "littleEndianCheckBox";
+            this.littleEndianCheckBox.Size = new System.Drawing.Size(261, 17);
+            this.littleEndianCheckBox.TabIndex = 1;
+            this.littleEndianCheckBox.Text = "Little Endian  (Check if Windows, uncheck if PS3)";
+            this.littleEndianCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.DefaultExt = "sav";
+            this.openFileDialog.Filter = "Borderlands Saves (*.sav)|*.sav|All Files (*.*)|*.*";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "Borderlands Saves (*.sav)|*.sav|All Files (*.*)|*.*";
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1253,7 +1253,7 @@
             this.Controls.Add(this.mainToolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Editor";
-            this.Text = "Gibbed\'s Borderlands Save Editor (Revision 10)";
+            this.Text = "Gibbed\'s Borderlands Save Editor";
             this.mainToolStrip.ResumeLayout(false);
             this.mainToolStrip.PerformLayout();
             this.mainTabs.ResumeLayout(false);
@@ -1275,29 +1275,29 @@
             this.weaponsTab.ResumeLayout(false);
             this.weaponsTab.PerformLayout();
             this.weaponsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weaponsSource)).EndInit();
             this.weaponsToolStrip.ResumeLayout(false);
             this.weaponsToolStrip.PerformLayout();
             this.itemsTab.ResumeLayout(false);
             this.itemsTab.PerformLayout();
             this.itemsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.itemsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsSource)).EndInit();
             this.itemsToolStrip.ResumeLayout(false);
             this.itemsToolStrip.PerformLayout();
             this.ammoPoolsTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ammoPoolsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ammoPoolsSource)).EndInit();
             this.skillsTab.ResumeLayout(false);
             this.skillsTab.PerformLayout();
             this.skillsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.skillsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skillsSource)).EndInit();
             this.skillsToolStrip.ResumeLayout(false);
             this.skillsToolStrip.PerformLayout();
             this.saveTab.ResumeLayout(false);
             this.saveTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ammoPoolsDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.skillsDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
