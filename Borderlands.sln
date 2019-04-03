@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Borderlands.SaveEdit", "Gibbed.Borderlands.SaveEdit\Gibbed.Borderlands.SaveEdit.csproj", "{3F77FC0A-0CFA-4533-AA7D-F55D5DD059D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Borderlands.SaveEdit", "projects\Gibbed.Borderlands.SaveEdit\Gibbed.Borderlands.SaveEdit.csproj", "{3F77FC0A-0CFA-4533-AA7D-F55D5DD059D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Helpers", "Gibbed.Helpers\Gibbed.Helpers.csproj", "{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Helpers", "projects\Gibbed.Helpers\Gibbed.Helpers.csproj", "{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Borderlands.FileFormats", "Gibbed.Borderlands.FileFormats\Gibbed.Borderlands.FileFormats.csproj", "{E6FFE137-F5CF-4DFB-A59F-CCA65CF40BE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Borderlands.FileFormats", "projects\Gibbed.Borderlands.FileFormats\Gibbed.Borderlands.FileFormats.csproj", "{E6FFE137-F5CF-4DFB-A59F-CCA65CF40BE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
