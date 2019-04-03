@@ -1,56 +1,78 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
+using Gibbed.Borderlands.FileFormats.Save;
 using Gibbed.IO;
 
 namespace Gibbed.Borderlands.FileFormats
 {
     public class SaveFile
     {
-        public Endian Endian { get; set; }
-        public Save.Player PlayerData { get; set; }
-        
+        public const string Signature = "WSG"; // Probably "WillowSaveGame"
+
+        #region Fields
+        private Endian _Endian;
+        private Player _PlayerData;
+        #endregion
+
         public SaveFile()
         {
-            this.PlayerData = new Save.Player();
-            this.Endian = Endian.Little;
+            this._Endian = Endian.Little;
+            this._PlayerData = new Player();
         }
 
-        public SaveFile(Save.Player playerData)
+        public SaveFile(Player playerData)
         {
-            this.PlayerData = playerData;
-            this.Endian = Endian.Little;
+            this._Endian = Endian.Little;
+            this._PlayerData = playerData;
         }
-        
-        public void Deserialize(Stream input)
+
+        #region Properties
+        public Endian Endian
         {
-            if (input.ReadString(3, Encoding.ASCII) != "WSG") // WSG is probably WillowSaveGame
-            {
-                throw new FormatException("not a Borderlands save file");
-            }
-
-            UInt32 version = input.ReadValueU32();
-            if (version != 2 && version.Swap() != 2)
-            {
-                throw new FormatException("unsupported Borderlands save file version (" + version.ToString() + ")");
-            }
-
-            this.Endian = version == 2 ? Endian.Little : Endian.Big;
-
-            SaveStream saveStream = new SaveStream(input, this.Endian);
-
-            this.PlayerData = new Save.Player();
-            this.PlayerData.Deserialize(saveStream);
+            get { return this._Endian; }
+            set { this._Endian = value; }
         }
+
+        public Player PlayerData
+        {
+            get { return this._PlayerData; }
+            set { this._PlayerData = value; }
+        }
+        #endregion
 
         public void Serialize(Stream output)
         {
-            output.WriteString("WSG", Encoding.ASCII);
+            output.WriteString(Signature, Encoding.ASCII);
             output.WriteValueU32(2, this.Endian);
 
             SaveStream saveStream = new SaveStream(output, this.Endian);
 
             this.PlayerData.Serialize(saveStream);
+        }
+
+        public void Deserialize(Stream input)
+        {
+            if (input.ReadString(Signature.Length, Encoding.ASCII) != Signature)
+            {
+                throw new FormatException("not a save");
+            }
+
+            var version = input.ReadValueU32();
+            if (version != 2 && version.Swap() != 2)
+            {
+                throw new FormatException("unsupported save version " + version.ToString(CultureInfo.InvariantCulture));
+            }
+            var endian = version == 2 ? Endian.Little : Endian.Big;
+
+            var saveStream = new SaveStream(input, endian);
+
+            var playerData = new Player();
+            playerData.Deserialize(saveStream);
+
+            this._Endian = endian;
+            this._PlayerData = playerData;
         }
     }
 }

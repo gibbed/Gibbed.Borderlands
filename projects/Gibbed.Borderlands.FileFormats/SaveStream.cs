@@ -7,50 +7,48 @@ namespace Gibbed.Borderlands.FileFormats
 {
     public class SaveStream
     {
-        private Stream Stream;
-        private Endian Endian;
+        private readonly Stream _BaseStream;
+        private readonly Endian _Endian;
 
-        public SaveStream(Stream stream, Endian endian)
+        public SaveStream(Stream baseStream, Endian endian)
         {
-            this.Stream = stream;
-            this.Endian = endian;
+            this._BaseStream = baseStream;
+            this._Endian = endian;
         }
 
-        public Int32 ReadValueS32()
+        public int ReadValueS32()
         {
-            return this.Stream.ReadValueS32(this.Endian);
+            return this._BaseStream.ReadValueS32(this._Endian);
         }
 
-        public UInt32 ReadValueU32()
+        public uint ReadValueU32()
         {
-            return this.Stream.ReadValueU32(this.Endian);
+            return this._BaseStream.ReadValueU32(this._Endian);
         }
 
         public float ReadValueF32()
         {
-            return this.Stream.ReadValueF32(this.Endian);
+            return this._BaseStream.ReadValueF32(this._Endian);
         }
 
         public T ReadEnum<T>()
         {
-            return this.Stream.ReadValueEnum<T>();
+            return this._BaseStream.ReadValueEnum<T>(this._Endian);
         }
 
         public string ReadString()
         {
-            Int32 length = this.ReadValueS32();
-
+            var length = this.ReadValueS32();
             if (length == 0)
             {
-                return "";
+                return string.Empty;
             }
 
             bool isUnicode = false;
             
-            // stupid stupid stupid stupid stupid
             if (length < 0)
             {
-                length = Math.Abs(length);
+                length = -length;
                 isUnicode = true;
             }
             
@@ -59,48 +57,48 @@ namespace Gibbed.Borderlands.FileFormats
                 throw new InvalidOperationException("somehow I doubt there is a >1MB string to be read");
             }
 
+            Encoding encoding;
             if (isUnicode == true)
             {
-                var encoding = this.Endian == Endian.Little ? Encoding.Unicode : Encoding.BigEndianUnicode;
-                return this.Stream.ReadString((uint)(length * 2), true, encoding);
+                encoding = this._Endian == Endian.Little ? Encoding.Unicode : Encoding.BigEndianUnicode;
+                length *= 2;
             }
             else
             {
-                return this.Stream.ReadString((uint)(length), true, Encoding.ASCII);
+                encoding = Encoding.ASCII;
             }
+            return this._BaseStream.ReadString(length, true, encoding);
         }
 
-        public string ReadStaticString(uint length)
+        public string ReadStaticString(int length)
         {
-            return this.Stream.ReadString(length, Encoding.ASCII);
+            return this._BaseStream.ReadString(length, Encoding.ASCII);
         }
 
         public byte[] ReadBuffer()
         {
-            int length = this.ReadValueS32();
-            byte[] rez = new byte[length];
-            this.Stream.Read(rez, 0, rez.Length);
-            return rez;
+            var length = this.ReadValueS32();
+            return this._BaseStream.ReadBytes(length);
         }
 
         public void WriteValueS32(int value)
         {
-            this.Stream.WriteValueS32(value, this.Endian);
+            this._BaseStream.WriteValueS32(value, this._Endian);
         }
 
         public void WriteValueU32(uint value)
         {
-            this.Stream.WriteValueU32(value, this.Endian);
+            this._BaseStream.WriteValueU32(value, this._Endian);
         }
 
         public void WriteValueF32(float value)
         {
-            this.Stream.WriteValueF32(value, this.Endian);
+            this._BaseStream.WriteValueF32(value, this._Endian);
         }
 
         public void WriteEnum<T>(T value)
         {
-            this.Stream.WriteValueEnum<T>(value);
+            this._BaseStream.WriteValueEnum<T>(value, this._Endian);
         }
 
         public void WriteString(string value)
@@ -115,22 +113,29 @@ namespace Gibbed.Borderlands.FileFormats
             // checking if a string contains special characters that can't
             // be stored in ASCII.
 
-            var encoding = this.Endian == Endian.Little ? Encoding.Unicode : Encoding.BigEndianUnicode;
+            var encoding = this._Endian == Endian.Little ? Encoding.Unicode : Encoding.BigEndianUnicode;
 
-            this.WriteValueS32(-(value.Length + 1));
-            this.Stream.WriteString(value, encoding);
-            this.Stream.WriteValueU16(0, this.Endian);
+            var bytes = encoding.GetBytes(value);
+
+            this.WriteValueS32(-((bytes.Length / 2) + 1));
+            this._BaseStream.WriteBytes(bytes);
+            this._BaseStream.WriteValueU16(0, this._Endian);
         }
 
         public void WriteStaticString(string value)
         {
-            this.Stream.WriteString(value, Encoding.ASCII);
+            this._BaseStream.WriteString(value, Encoding.ASCII);
         }
 
         public void WriteBuffer(byte[] value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException("value");
+            }
+
             this.WriteValueS32(value.Length);
-            this.Stream.Write(value, 0, value.Length);
+            this._BaseStream.WriteBytes(value);
         }
     }
 }

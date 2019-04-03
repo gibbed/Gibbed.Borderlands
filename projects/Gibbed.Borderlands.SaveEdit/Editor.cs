@@ -11,7 +11,7 @@ namespace Gibbed.Borderlands.SaveEdit
 {
     public partial class Editor : Form
     {
-        private SaveFile Save
+        private SaveFile _Save
         {
             get { return (SaveFile)this.saveFileSource.DataSource; }
             set { this.saveFileSource.DataSource = value; }
@@ -21,15 +21,12 @@ namespace Gibbed.Borderlands.SaveEdit
         {
             this.InitializeComponent();
 
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            path = Path.Combine(path, "My Games");
-            path = Path.Combine(path, "Borderlands");
-            path = Path.Combine(path, "SaveData");
+            var savePath = Helpers.GetSavePath();
 
-            this.openFileDialog.InitialDirectory = path;
-            this.saveFileDialog.InitialDirectory = path;
+            this.openFileDialog.InitialDirectory = savePath;
+            this.saveFileDialog.InitialDirectory = savePath;
 
-            List<PlayerClass> classes = new List<PlayerClass>();
+            var classes = new List<PlayerClass>();
             classes.Add(new PlayerClass("gd_Brick.Character.CharacterClass_Brick", "Brick"));
             classes.Add(new PlayerClass("gd_lilith.Character.CharacterClass_Lilith", "Lilith"));
             classes.Add(new PlayerClass("gd_mordecai.Character.CharacterClass_Mordecai", "Mordecai"));
@@ -39,12 +36,12 @@ namespace Gibbed.Borderlands.SaveEdit
             this.characterComboBox.DisplayMember = "Name";
             this.characterComboBox.DataSource = classes;
 
-            this.Save = new SaveFile(DefaultPlayer.Brick.Create());
+            this._Save = new SaveFile(DefaultPlayer.Brick.Create());
         }
 
         private void OnNewBerserker(object sender, EventArgs e)
         {
-            this.Save = new SaveFile(DefaultPlayer.Brick.Create());
+            this._Save = new SaveFile(DefaultPlayer.Brick.Create());
         }
 
         private void OnOpen(object sender, EventArgs e)
@@ -54,13 +51,12 @@ namespace Gibbed.Borderlands.SaveEdit
                 return;
             }
 
-            SaveFile save = new SaveFile();
-
-            Stream input = this.openFileDialog.OpenFile();
-            save.Deserialize(input);
-            input.Close();
-
-            this.Save = save;
+            var save = new SaveFile();
+            using (var input = this.openFileDialog.OpenFile())
+            {
+                save.Deserialize(input);
+            }
+            this._Save = save;
         }
 
         private void OnSave(object sender, EventArgs e)
@@ -70,16 +66,17 @@ namespace Gibbed.Borderlands.SaveEdit
                 return;
             }
 
-            Stream output = File.Open(this.saveFileDialog.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
-            this.Save.Serialize(output);
-            output.Close();
+            using (var output = this.saveFileDialog.OpenFile())
+            {
+                this._Save.Serialize(output);
+            }
         }
 
         private void OnWeaponDuplicate(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in this.weaponsDataGrid.SelectedRows)
             {
-                Save.Weapon clone = (Save.Weapon)((Save.Weapon)row.DataBoundItem).Clone();
+                var clone = (Save.Weapon)((Save.Weapon)row.DataBoundItem).Clone();
                 clone.EquipSlot = 0;
                 this.weaponsSource.Add(clone);
             }
@@ -89,7 +86,7 @@ namespace Gibbed.Borderlands.SaveEdit
         {
             foreach (DataGridViewRow row in this.itemsDataGrid.SelectedRows)
             {
-                Save.Item clone = (Save.Item)((Save.Item)row.DataBoundItem).Clone();
+                var clone = (Save.Item)((Save.Item)row.DataBoundItem).Clone();
                 clone.Equipped = 0;
                 this.itemsSource.Add(clone);
             }
@@ -97,13 +94,11 @@ namespace Gibbed.Borderlands.SaveEdit
 
         private string GetSkillLevel(string name)
         {
-            foreach (Save.Skill skill in
-                this.Save.PlayerData.Skills.Where(
-                    candidate => candidate.Name.ToLowerInvariant() == name.ToLowerInvariant()))
+            foreach (var skill in this._Save.PlayerData.Skills.Where(
+                c => string.Compare(c.Name, name, StringComparison.InvariantCultureIgnoreCase) == 0))
             {
                 return Math.Max(0, Math.Min(5, skill.Level)).ToString();
             }
-
             return "0";
         }
 
@@ -111,7 +106,7 @@ namespace Gibbed.Borderlands.SaveEdit
         {
             string url = "http://www.borderlandsthegame.com/skilltree/";
 
-            if (this.Save.PlayerData.Character == "gd_Roland.Character.CharacterClass_Roland")
+            if (this._Save.PlayerData.Character == "gd_Roland.Character.CharacterClass_Roland")
             {
                 url += "roland/#0";
 
@@ -141,7 +136,7 @@ namespace Gibbed.Borderlands.SaveEdit
                 url += GetSkillLevel("gd_Skills2_Roland.Medic.Grit");
                 url += GetSkillLevel("gd_Skills2_Roland.Medic.Stat");
             }
-            else if (this.Save.PlayerData.Character == "gd_mordecai.Character.CharacterClass_Mordecai")
+            else if (this._Save.PlayerData.Character == "gd_mordecai.Character.CharacterClass_Mordecai")
             {
                 url += "mordecai/#1";
 
@@ -171,7 +166,7 @@ namespace Gibbed.Borderlands.SaveEdit
                 url += GetSkillLevel("gd_Skills2_Mordecai.Gunslinger.HairTrigger");
                 url += GetSkillLevel("gd_Skills2_Mordecai.Gunslinger.Relentless");
             }
-            else if (this.Save.PlayerData.Character == "gd_lilith.Character.CharacterClass_Lilith")
+            else if (this._Save.PlayerData.Character == "gd_lilith.Character.CharacterClass_Lilith")
             {
                 url += "lilith/#2";
 
@@ -201,7 +196,7 @@ namespace Gibbed.Borderlands.SaveEdit
                 url += GetSkillLevel("gd_Skills2_Lilith.Assassin.Blackout");
                 url += GetSkillLevel("gd_Skills2_Lilith.Assassin.PhaseStrike");
             }
-            else if (this.Save.PlayerData.Character == "gd_Brick.Character.CharacterClass_Brick")
+            else if (this._Save.PlayerData.Character == "gd_Brick.Character.CharacterClass_Brick")
             {
                 url += "brick/#3";
 

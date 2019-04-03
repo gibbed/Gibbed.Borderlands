@@ -6,7 +6,7 @@ namespace Gibbed.Borderlands.SaveEdit.DefaultPlayer
     {
         public static Save.Player Create()
         {
-            Save.Player player = new Save.Player();
+            var player = new Save.Player();
 
             player.SaveSlot = 1;
             player.PlayTime = 1;
