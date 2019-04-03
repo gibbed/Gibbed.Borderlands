@@ -1,30 +1,27 @@
 ﻿using System;
-using System.Drawing;
 using System.Collections.Generic;
-using System.IO;
-using Gibbed.Helpers;
 
 namespace Gibbed.Borderlands.FileFormats.Save
 {
     public class Player
     {
-        public UInt32 Version;
+        public uint Version;
         public string Character { get; set; }
-        public UInt32 Level { get; set; }
-        public UInt32 Experience { get; set; }
-        public UInt32 SkillPoints { get; set; }
-        public UInt32 Unknown03;
-        public UInt32 Money { get; set; }
-        public UInt32 MaybePlaythroughUnlocked { get; set; }
+        public uint Level { get; set; }
+        public uint Experience { get; set; }
+        public uint SkillPoints { get; set; }
+        public uint Unknown03;
+        public uint Money { get; set; }
+        public uint MaybePlaythroughUnlocked { get; set; }
         public List<Skill> Skills { get; set; }
-        public UInt32 Unknown07;
-        public UInt32 Unknown08;
-        public UInt32 Unknown09;
-        public UInt32 Unknown10;
+        public uint Unknown07;
+        public uint Unknown08;
+        public uint Unknown09;
+        public uint Unknown10;
         public List<AmmoPool> AmmoPools { get; set; }
         public List<Item> Items { get; set; }
-        public UInt32 BackpackSlots { get; set; }
-        public UInt32 WeaponSlots { get; set; }
+        public uint BackpackSlots { get; set; }
+        public uint WeaponSlots { get; set; }
         public List<Weapon> Weapons { get; set; }
         public byte[] Stats = new byte[0];
         public List<string> VisitedStations { get; set; }
@@ -32,21 +29,21 @@ namespace Gibbed.Borderlands.FileFormats.Save
         //public ??? Unknown19 = ...
         //public ??? Unknown20 = ...
         public string Unknown21;
-        public UInt32 Unknown22;
-        public UInt32 Unknown23;
-        public UInt32 SaveSlot { get; set; } // Saving uses this to determin what save file to save over, LAME!
-        public UInt32 ExtraDataVersion;
-        public UInt32 Unknown26;
+        public uint Unknown22;
+        public uint Unknown23;
+        public uint SaveSlot { get; set; } // Saving uses this to determin what save file to save over, LAME!
+        public uint ExtraDataVersion;
+        public uint Unknown26;
         public List<MissionPlaythrough> MissionPlaythroughs = new List<MissionPlaythrough>();
-        public UInt32 PlayTime; // If this is 0, both 'Time' and 'Save' on the load game screen will not be visible.
+        public uint PlayTime; // If this is 0, both 'Time' and 'Save' on the load game screen will not be visible.
         public string SaveTime;
         public string Name { get; set; }
-        public UInt32 Color1;
-        public UInt32 Color2;
-        public UInt32 Color3;
-        public UInt32 Unknown34;
-        public List<UInt32> Unknown35 = new List<UInt32>();
-        public List<UInt32> Unknown36 = new List<UInt32>();
+        public uint Color1;
+        public uint Color2;
+        public uint Color3;
+        public uint Unknown34;
+        public List<uint> Unknown35 = new List<UInt32>();
+        public List<uint> Unknown36 = new List<UInt32>();
         public List<EchoPlaythrough> EchoPlaythroughs = new List<EchoPlaythrough>();
         public byte[] Unknown38 = new byte[0];
 

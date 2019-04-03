@@ -1,16 +1,10 @@
-﻿using System;
-using System.Drawing;
-using System.Collections.Generic;
-using System.IO;
-using Gibbed.Helpers;
-
-namespace Gibbed.Borderlands.FileFormats.Save
+﻿namespace Gibbed.Borderlands.FileFormats.Save
 {
     public class Echo
     {
         public string Name;
-        public UInt32 Unknown1;
-        public UInt32 Unknown2;
+        public uint Unknown1;
+        public uint Unknown2;
 
         public void Deserialize(SaveStream input)
         {

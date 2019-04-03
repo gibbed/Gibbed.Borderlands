@@ -1,29 +1,30 @@
 ﻿using System;
 using System.IO;
-using Gibbed.Helpers;
+using System.Text;
+using Gibbed.IO;
 
 namespace Gibbed.Borderlands.FileFormats
 {
     public class SaveFile
     {
-        public bool LittleEndian { get; set; }
+        public Endian Endian { get; set; }
         public Save.Player PlayerData { get; set; }
         
         public SaveFile()
         {
             this.PlayerData = new Save.Player();
-            this.LittleEndian = true;
+            this.Endian = Endian.Little;
         }
 
         public SaveFile(Save.Player playerData)
         {
             this.PlayerData = playerData;
-            this.LittleEndian = true;
+            this.Endian = Endian.Little;
         }
         
         public void Deserialize(Stream input)
         {
-            if (input.ReadStringASCII(3) != "WSG") // WSG is probably WillowSaveGame
+            if (input.ReadString(3, Encoding.ASCII) != "WSG") // WSG is probably WillowSaveGame
             {
                 throw new FormatException("not a Borderlands save file");
             }
@@ -34,9 +35,9 @@ namespace Gibbed.Borderlands.FileFormats
                 throw new FormatException("unsupported Borderlands save file version (" + version.ToString() + ")");
             }
 
-            this.LittleEndian = version == 2;
+            this.Endian = version == 2 ? Endian.Little : Endian.Big;
 
-            SaveStream saveStream = new SaveStream(input, this.LittleEndian);
+            SaveStream saveStream = new SaveStream(input, this.Endian);
 
             this.PlayerData = new Save.Player();
             this.PlayerData.Deserialize(saveStream);
@@ -44,10 +45,10 @@ namespace Gibbed.Borderlands.FileFormats
 
         public void Serialize(Stream output)
         {
-            output.WriteStringASCII("WSG");
-            output.WriteValueU32(2, this.LittleEndian);
+            output.WriteString("WSG", Encoding.ASCII);
+            output.WriteValueU32(2, this.Endian);
 
-            SaveStream saveStream = new SaveStream(output, this.LittleEndian);
+            SaveStream saveStream = new SaveStream(output, this.Endian);
 
             this.PlayerData.Serialize(saveStream);
         }

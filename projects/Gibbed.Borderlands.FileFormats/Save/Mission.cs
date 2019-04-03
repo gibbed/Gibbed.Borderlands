@@ -1,8 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Collections.Generic;
-using System.IO;
-using Gibbed.Helpers;
+﻿using System.Collections.Generic;
 
 namespace Gibbed.Borderlands.FileFormats.Save
 {
@@ -11,7 +7,7 @@ namespace Gibbed.Borderlands.FileFormats.Save
         public class Unknown4
         {
             public string Unknown0;
-            public UInt32 Unknown1;
+            public uint Unknown1;
 
             public void Deserialize(SaveStream input)
             {
@@ -27,9 +23,9 @@ namespace Gibbed.Borderlands.FileFormats.Save
         }
 
         public string Name;
-        public UInt32 Unknown1;
-        public UInt32 Unknown2;
-        public UInt32 Unknown3;
+        public uint Unknown1;
+        public uint Unknown2;
+        public uint Unknown3;
         public List<Unknown4> Unknown4s = new List<Unknown4>();
 
         public void Deserialize(SaveStream input)

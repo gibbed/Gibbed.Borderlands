@@ -1,35 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Gibbed.Helpers;
+using Gibbed.IO;
 
 namespace Gibbed.Borderlands.FileFormats
 {
     public class SaveStream
     {
         private Stream Stream;
-        private bool LittleEndian;
+        private Endian Endian;
 
-        public SaveStream(Stream stream, bool littleEndian)
+        public SaveStream(Stream stream, Endian endian)
         {
             this.Stream = stream;
-            this.LittleEndian = littleEndian;
+            this.Endian = endian;
         }
 
         public Int32 ReadValueS32()
         {
-            return this.Stream.ReadValueS32(this.LittleEndian);
+            return this.Stream.ReadValueS32(this.Endian);
         }
 
         public UInt32 ReadValueU32()
         {
-            return this.Stream.ReadValueU32(this.LittleEndian);
+            return this.Stream.ReadValueU32(this.Endian);
         }
 
         public float ReadValueF32()
         {
-            return this.Stream.ReadValueF32(this.LittleEndian);
+            return this.Stream.ReadValueF32(this.Endian);
         }
 
         public T ReadEnum<T>()
@@ -62,40 +61,41 @@ namespace Gibbed.Borderlands.FileFormats
 
             if (isUnicode == true)
             {
-                return this.Stream.ReadStringUTF16(this.LittleEndian, (uint)(length * 2), true);
+                var encoding = this.Endian == Endian.Little ? Encoding.Unicode : Encoding.BigEndianUnicode;
+                return this.Stream.ReadString((uint)(length * 2), true, encoding);
             }
             else
             {
-                return this.Stream.ReadStringASCII((uint)(length), true);
+                return this.Stream.ReadString((uint)(length), true, Encoding.ASCII);
             }
         }
 
-        public string ReadStaticString(UInt32 length)
+        public string ReadStaticString(uint length)
         {
-            return this.Stream.ReadStringASCII(length);
+            return this.Stream.ReadString(length, Encoding.ASCII);
         }
 
         public byte[] ReadBuffer()
         {
-            Int32 length = this.ReadValueS32();
+            int length = this.ReadValueS32();
             byte[] rez = new byte[length];
             this.Stream.Read(rez, 0, rez.Length);
             return rez;
         }
 
-        public void WriteValueS32(Int32 value)
+        public void WriteValueS32(int value)
         {
-            this.Stream.WriteValueS32(value, this.LittleEndian);
+            this.Stream.WriteValueS32(value, this.Endian);
         }
 
-        public void WriteValueU32(UInt32 value)
+        public void WriteValueU32(uint value)
         {
-            this.Stream.WriteValueU32(value, this.LittleEndian);
+            this.Stream.WriteValueU32(value, this.Endian);
         }
 
         public void WriteValueF32(float value)
         {
-            this.Stream.WriteValueF32(value, this.LittleEndian);
+            this.Stream.WriteValueF32(value, this.Endian);
         }
 
         public void WriteEnum<T>(T value)
@@ -105,7 +105,7 @@ namespace Gibbed.Borderlands.FileFormats
 
         public void WriteString(string value)
         {
-            if (value == null || value.Length == 0)
+            if (string.IsNullOrEmpty(value) == true)
             {
                 this.WriteValueS32(0);
                 return;
@@ -115,14 +115,16 @@ namespace Gibbed.Borderlands.FileFormats
             // checking if a string contains special characters that can't
             // be stored in ASCII.
 
+            var encoding = this.Endian == Endian.Little ? Encoding.Unicode : Encoding.BigEndianUnicode;
+
             this.WriteValueS32(-(value.Length + 1));
-            this.Stream.WriteStringUTF16(this.LittleEndian, value);
-            this.Stream.WriteValueU16(0);
+            this.Stream.WriteString(value, encoding);
+            this.Stream.WriteValueU16(0, this.Endian);
         }
 
         public void WriteStaticString(string value)
         {
-            this.Stream.WriteStringASCII(value);
+            this.Stream.WriteString(value, Encoding.ASCII);
         }
 
         public void WriteBuffer(byte[] value)

@@ -37,7 +37,6 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -78,12 +77,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gibbed.Borderlands.FileFormats\Gibbed.Borderlands.FileFormats.csproj">
-      <Project>{E6FFE137-F5CF-4DFB-A59F-CCA65CF40BE8}</Project>
-      <Name>Gibbed.Borderlands.FileFormats</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\DataSources\Gibbed.Borderlands.FileFormats.SaveFile.datasource" />
     <None Include="Resources\Duplicate.png" />
     <None Include="Resources\ExportClipboard.png" />
@@ -92,6 +85,12 @@
     <Content Include="Resources\Open.png" />
     <Content Include="Resources\Pink.ico" />
     <Content Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gibbed.Borderlands.FileFormats\Gibbed.Borderlands.FileFormats.csproj">
+      <Project>{E6FFE137-F5CF-4DFB-A59F-CCA65CF40BE8}</Project>
+      <Name>Gibbed.Borderlands.FileFormats</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

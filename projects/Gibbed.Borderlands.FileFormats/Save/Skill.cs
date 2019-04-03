@@ -1,17 +1,11 @@
-﻿using System;
-using System.Drawing;
-using System.Collections.Generic;
-using System.IO;
-using Gibbed.Helpers;
-
-namespace Gibbed.Borderlands.FileFormats.Save
+﻿namespace Gibbed.Borderlands.FileFormats.Save
 {
     public class Skill
     {
         public string Name { get; set; }
-        public UInt32 Level { get; set; }
-        public UInt32 Experience { get; set; }
-        public Int32 ArtifactMode { get; set; }
+        public uint Level { get; set; }
+        public uint Experience { get; set; }
+        public int ArtifactMode { get; set; }
 
         public void Deserialize(SaveStream input)
         {

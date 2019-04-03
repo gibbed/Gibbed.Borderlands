@@ -1,17 +1,11 @@
-﻿using System;
-using System.Drawing;
-using System.Collections.Generic;
-using System.IO;
-using Gibbed.Helpers;
-
-namespace Gibbed.Borderlands.FileFormats.Save
+﻿namespace Gibbed.Borderlands.FileFormats.Save
 {
     public class AmmoPool
     {
         public string Name { get; set; }
         public string Pool { get; set; }
         public float Quantity { get; set; }
-        public Int32 UpgradeLevel { get; set; }
+        public int UpgradeLevel { get; set; }
 
         public void Deserialize(SaveStream input)
         {

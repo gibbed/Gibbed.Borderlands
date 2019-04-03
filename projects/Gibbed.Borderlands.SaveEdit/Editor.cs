@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Gibbed.Borderlands.FileFormats;
 using Save = Gibbed.Borderlands.FileFormats.Save;
@@ -13,15 +13,8 @@ namespace Gibbed.Borderlands.SaveEdit
     {
         private SaveFile Save
         {
-            get
-            {
-                return (SaveFile)this.saveFileSource.DataSource;
-            }
-
-            set
-            {
-                this.saveFileSource.DataSource = value;
-            }
+            get { return (SaveFile)this.saveFileSource.DataSource; }
+            set { this.saveFileSource.DataSource = value; }
         }
 
         public Editor()
@@ -104,7 +97,9 @@ namespace Gibbed.Borderlands.SaveEdit
 
         private string GetSkillLevel(string name)
         {
-            foreach (Save.Skill skill in this.Save.PlayerData.Skills.Where(candidate => candidate.Name.ToLowerInvariant() == name.ToLowerInvariant()))
+            foreach (Save.Skill skill in
+                this.Save.PlayerData.Skills.Where(
+                    candidate => candidate.Name.ToLowerInvariant() == name.ToLowerInvariant()))
             {
                 return Math.Max(0, Math.Min(5, skill.Level)).ToString();
             }

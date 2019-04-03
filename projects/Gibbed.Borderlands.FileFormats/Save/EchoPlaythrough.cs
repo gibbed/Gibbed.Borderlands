@@ -1,14 +1,10 @@
-﻿using System;
-using System.Drawing;
-using System.Collections.Generic;
-using System.IO;
-using Gibbed.Helpers;
+﻿using System.Collections.Generic;
 
 namespace Gibbed.Borderlands.FileFormats.Save
 {
     public class EchoPlaythrough
     {
-        public UInt32 Playthrough;
+        public uint Playthrough;
         public List<Echo> Echoes = new List<Echo>();
 
         public void Deserialize(SaveStream input)

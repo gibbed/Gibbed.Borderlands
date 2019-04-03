@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Windows.Forms;
-using Gibbed.Borderlands.FileFormats;
-using Save = Gibbed.Borderlands.FileFormats.Save;
+﻿using Save = Gibbed.Borderlands.FileFormats.Save;
 
 namespace Gibbed.Borderlands.SaveEdit.DefaultPlayer
 {

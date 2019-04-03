@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.Collections.Generic;
-using System.IO;
-using Gibbed.Helpers;
 
 namespace Gibbed.Borderlands.FileFormats.Save
 {
@@ -17,9 +13,9 @@ namespace Gibbed.Borderlands.FileFormats.Save
         public string Manufacturer { get; set; }
         public string Prefix { get; set; }
         public string Title { get; set; }
-        public UInt32 Unknown09 { get; set; }
-        public UInt32 Quality { get; set; }
-        public UInt32 Equipped { get; set; }
+        public uint Unknown09 { get; set; }
+        public uint Quality { get; set; }
+        public uint Equipped { get; set; }
 
         public void Deserialize(SaveStream input)
         {

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Drawing;
-using System.Collections.Generic;
-using System.IO;
-using Gibbed.Helpers;
+﻿using System.Collections.Generic;
 
 namespace Gibbed.Borderlands.FileFormats.Save
 {
     public class MissionPlaythrough
     {
-        public UInt32 Playthrough;
+        public uint Playthrough;
         public string ActiveMission;
         public List<Mission> Missions = new List<Mission>();
 
