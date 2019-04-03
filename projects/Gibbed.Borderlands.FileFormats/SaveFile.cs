@@ -40,6 +40,13 @@ namespace Gibbed.Borderlands.FileFormats
             get { return this._PlayerData; }
             set { this._PlayerData = value; }
         }
+
+        // So I don't have to rework the SaveEdit UI.
+        public bool LittleEndian
+        {
+            get { return this.Endian == Endian.Little; }
+            set { this.Endian = value == true ? Endian.Little : Endian.Big; }
+        }
         #endregion
 
         public void Serialize(Stream output)
